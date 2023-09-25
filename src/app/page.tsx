@@ -1,95 +1,129 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+import Image from "next/image";
+import styles from "./page.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRightLong, faPlayCircle } from "@fortawesome/free-solid-svg-icons";
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <>
+      <div className={styles.homeContainerBg}>
+        <div className={styles.homeContainer}>
+          <div className={styles.homeFlexbox}>
+            <img src="/bg.webp"></img>
+          </div>
+
+          <div className={styles.homeFlexbox}>
+            <div className={styles.textContainer}>
+              <h1 className={styles.headingOne}>VocaVista?</h1>
+              <h2 className={styles.headingTwo}>
+                E-Learning Platform with Adaptive Learning!
+              </h2>
+              {/* <FontAwesomeIcon icon={faRightLong} className={styles.icon} /> */}
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      {/* Features Section */}
+      <div className={styles.featuresContainerBg}>
+        <div className={styles.featuresContainer}>
+          <div className={styles.featureBox}>
+            <h3>Adaptive Learning</h3>
+            <p>
+              Experience tailored lessons that adapt to your individual learning
+              pace.
+            </p>
+          </div>
+
+          <div className={styles.featureBox}>
+            <h3>Interactive Lessons</h3>
+            <p>
+              Engage in lessons filled with dynamic quizzes, speaking exercises,
+              and more.
+            </p>
+          </div>
+
+          <div className={styles.featureBox}>
+            <h3>Global Community</h3>
+            <p>
+              Join a community of language learners and native speakers to
+              practice with.
+            </p>
+          </div>
+        </div>
       </div>
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      {/* Testimonial Section */}
+      <div className={styles.testimonialsContainer}>
+        <div className={styles.testimonialsContainerAnimation}>
+          <h3 className={styles.sectionTitle}>What Our Users Say About</h3>
+          <div className={styles.testimonial}>
+            <FontAwesomeIcon icon={faPlayCircle} className={styles.playIcon} />
+            <p>
+              "I've never learned a language so efficiently! The adaptive
+              learning really makes a difference."
+            </p>
+            <span>- Sarah, New York</span>
+          </div>
+          <div className={styles.testimonial}>
+            <FontAwesomeIcon icon={faPlayCircle} className={styles.playIcon} />
+            <p>
+              "The community here is so welcoming. I've made friends and
+              language partners from all over the world."
+            </p>
+            <span>- Jae, Seoul</span>
+          </div>
+        </div>
       </div>
-    </main>
-  )
+
+      <div className={styles.coursesContainerBg}>
+        <div className={styles.coursesContainer}>
+          <h3 className={styles.sectionTitle}>Top Featured Courses ⭐</h3>
+          <div className={styles.courseCard}>
+            <div className={styles.courseImageContainer}>
+              <Image
+                src="/course1.webp"
+                alt="Course 1"
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
+            <h4>Beginner Korean *</h4>
+            <p>
+              Start your journey with the basics of Korean grammar and
+              vocabulary.
+            </p>
+          </div>
+          <div className={styles.courseCard}>
+            <div className={styles.courseImageContainer}>
+              <Image
+                src="/course2.webp"
+                alt="Course 2"
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
+            <h4>Intermediate Korean Conversations *</h4>
+            <p>
+              Dive into day-to-day dialogues and polish your speaking skills.
+            </p>
+          </div>
+          <div className={styles.courseCard}>
+            <div className={styles.courseImageContainer}>
+              <Image
+                src="/course3.webp"
+                alt="Course 3"
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
+            <h4>Advanced Korean Writing *</h4>
+            <p>
+              Master the art of writing in Korean with comprehensive lessons.
+            </p>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 }
