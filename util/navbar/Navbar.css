@@ -55,11 +55,6 @@ nav {
   letter-spacing: 1px;
 }
 
-/* .navbar-flexbox:nth-child(2) li:hover {
-  color: orange;
-  border-bottom: 4px solid orange;
-} */
-
 .navbar-link {
   text-decoration: none;
   color: white;
@@ -75,4 +70,10 @@ nav {
 
 .navbar-account-icon {
   width: 25px;
+}
+
+@media screen and (max-width: 767px) {
+  .navbar-flexbox:nth-child(2) {
+    display: none;
+  }
 }

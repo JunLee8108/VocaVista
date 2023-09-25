@@ -26,9 +26,12 @@ export default function Home() {
 
       {/* Features Section */}
       <div className={styles.featuresContainerBg}>
+        <div className={styles.featuresHeader}>
+          <h3>Core Features of VocaVista</h3>
+        </div>
         <div className={styles.featuresContainer}>
           <div className={styles.featureBox}>
-            <h3>Adaptive Learning</h3>
+            <h3>🟣 Adaptive Learning</h3>
             <p>
               Experience tailored lessons that adapt to your individual learning
               pace.
@@ -36,7 +39,7 @@ export default function Home() {
           </div>
 
           <div className={styles.featureBox}>
-            <h3>Interactive Lessons</h3>
+            <h3>🟠 Interactive Lessons</h3>
             <p>
               Engage in lessons filled with dynamic quizzes, speaking exercises,
               and more.
@@ -44,7 +47,7 @@ export default function Home() {
           </div>
 
           <div className={styles.featureBox}>
-            <h3>Global Community</h3>
+            <h3>🟢 Global Community</h3>
             <p>
               Join a community of language learners and native speakers to
               practice with.
@@ -56,7 +59,9 @@ export default function Home() {
       {/* Testimonial Section */}
       <div className={styles.testimonialsContainer}>
         <div className={styles.testimonialsContainerAnimation}>
-          <h3 className={styles.sectionTitle}>What Our Users Say About</h3>
+          <h3 className={styles.testimonialsSectionTitle}>
+            What Our Users Say
+          </h3>
           <div className={styles.testimonial}>
             <FontAwesomeIcon icon={faPlayCircle} className={styles.playIcon} />
             <p>
@@ -77,15 +82,16 @@ export default function Home() {
       </div>
 
       <div className={styles.coursesContainerBg}>
+        <h3 className={styles.sectionTitle}>Top Featured Courses ⭐</h3>
         <div className={styles.coursesContainer}>
-          <h3 className={styles.sectionTitle}>Top Featured Courses ⭐</h3>
           <div className={styles.courseCard}>
             <div className={styles.courseImageContainer}>
               <Image
                 src="/course1.webp"
                 alt="Course 1"
-                layout="fill"
-                objectFit="cover"
+                fill={true}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                style={{ objectFit: "cover" }}
               />
             </div>
             <h4>Beginner Korean *</h4>
@@ -99,8 +105,10 @@ export default function Home() {
               <Image
                 src="/course2.webp"
                 alt="Course 2"
-                layout="fill"
-                objectFit="cover"
+                fill={true}
+                priority={true}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                style={{ objectFit: "cover" }}
               />
             </div>
             <h4>Intermediate Korean Conversations *</h4>
@@ -113,8 +121,9 @@ export default function Home() {
               <Image
                 src="/course3.webp"
                 alt="Course 3"
-                layout="fill"
-                objectFit="cover"
+                fill={true}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                style={{ objectFit: "cover" }}
               />
             </div>
             <h4>Advanced Korean Writing *</h4>

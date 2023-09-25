@@ -1,5 +1,6 @@
 import "./globals.css";
 import Navbar from "../../util/navbar/Navbar";
+import Footer from "../../util/footer/Footer";
 import type { Metadata } from "next";
 import { Ubuntu } from "next/font/google";
 
@@ -29,6 +30,7 @@ export default function RootLayout({
       <body className={ubuntu.className} suppressHydrationWarning={true}>
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
