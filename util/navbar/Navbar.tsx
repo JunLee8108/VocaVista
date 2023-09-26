@@ -43,7 +43,7 @@ export default function Navbar() {
             })}
 
             <li>
-              <Link href="/account" className="navbar-link">
+              <Link href="/account/login" className="navbar-link">
                 <FontAwesomeIcon
                   icon={faUser}
                   size="lg"

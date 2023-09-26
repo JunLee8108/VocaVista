@@ -43,14 +43,15 @@ nav {
 
 .navbar-flexbox:nth-child(2) {
   /* background-color: yellow; */
+  gap: 3rem;
   justify-content: flex-end;
+  padding-right: 30px;
 }
 
 .navbar-flexbox:nth-child(2) li {
   list-style-type: none;
   font-size: 12px;
   font-weight: 500;
-  margin-right: 40px;
   cursor: pointer;
   letter-spacing: 1px;
 }

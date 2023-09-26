@@ -2,7 +2,7 @@ import Image from "next/image";
 import styles from "./page.module.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faKey } from "@fortawesome/free-solid-svg-icons";
+import { faKey, faComment } from "@fortawesome/free-solid-svg-icons";
 
 import "./page.css";
 
@@ -13,7 +13,9 @@ export default function Account() {
         <div className="account-form">
           <form>
             <div className="account-form-flexbox">
-              <h1>VocaVista</h1>
+              <h1>
+                VocaVista <FontAwesomeIcon icon={faComment} />
+              </h1>
             </div>
 
             <div className="account-form-flexbox">

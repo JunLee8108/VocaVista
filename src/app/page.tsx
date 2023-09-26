@@ -54,7 +54,11 @@ export default function Home() {
         <div className={styles.testimonialsContainerAnimation}>
           <h3 className={styles.testimonialsSectionTitle}>
             What Our Users Say{" "}
-            <FontAwesomeIcon icon={faComments} style={{ marginLeft: "5px" }} />
+            <FontAwesomeIcon
+              icon={faComments}
+              style={{ marginLeft: "5px" }}
+              size="sm"
+            />
           </h3>
 
           {testimonial.map((content, index) => {
@@ -79,6 +83,7 @@ export default function Home() {
             <FontAwesomeIcon
               icon={faStar}
               style={{ marginLeft: "5px", color: "orange" }}
+              size="sm"
             />
           </h3>
         </div>

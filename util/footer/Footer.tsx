@@ -12,11 +12,11 @@ export default function Footer() {
             <p>2023 VocaVista | All Rights Reserved</p>
           </div>
           <div className="footer-flexbox">
-            <li>Home</li>
-            <li>Learning</li>
-            <li>Community</li>
-            <li>Help & FAQ</li>
-            <li>Account</li>
+            <li>HOME</li>
+            <li>LEARNING</li>
+            <li>COMMUNITY</li>
+            <li>HELP & FAQ</li>
+            <li>ACCOUNT</li>
           </div>
         </div>
       </footer>

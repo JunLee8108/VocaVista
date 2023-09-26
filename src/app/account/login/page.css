@@ -138,3 +138,50 @@
 .account-form-flexbox p:hover {
   color: red;
 }
+
+@media screen and (max-width: 767px) {
+  .account-form {
+    width: 85%;
+    height: auto;
+  }
+
+  .account-form form {
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .account-form-flexbox:nth-child(1) {
+    width: 100%;
+    height: 100px;
+  }
+
+  .account-form-flexbox:nth-child(1) h1 {
+    letter-spacing: 1px;
+    font-size: 20px;
+  }
+
+  .account-form-flexbox:nth-child(2) {
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 25px;
+  }
+
+  .account-form-flexbox:nth-child(2) h1 {
+    color: #121212;
+    letter-spacing: 0px;
+    font-size: 20px;
+  }
+
+  .account-form-flexbox:nth-child(2) button {
+    width: 70%;
+  }
+
+  .account-input-container {
+    width: 70%;
+  }
+
+  .account-form-flexbox p {
+    font-size: 13px;
+  }
+}

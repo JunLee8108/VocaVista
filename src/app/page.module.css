@@ -70,7 +70,6 @@
 }
 
 .headingTwo span {
-  letter-spacing: 1px;
   text-decoration: underline;
 }
 
@@ -286,6 +285,7 @@
   opacity: 0;
   transform: translateY(20px);
   animation: slideUp 1s 1.3s forwards;
+  margin-bottom: 20px;
 }
 
 .courseCard {
@@ -488,6 +488,7 @@
   .coursesContainer {
     width: 100%;
     gap: 1rem;
+    margin-bottom: 0px;
   }
 
   .coursesHeading {

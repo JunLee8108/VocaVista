@@ -13,7 +13,12 @@ const feature = [
     title: "Adaptive Learning",
     content:
       "Experience tailored Korean lessons that adapt to your individual learning pace.",
-    icon: <FontAwesomeIcon icon={faBook} style={{ marginRight: "10px" }} />,
+    icon: (
+      <FontAwesomeIcon
+        icon={faBook}
+        style={{ marginRight: "10px", color: "#FF964f" }}
+      />
+    ),
   },
   {
     id: 1,
@@ -21,7 +26,12 @@ const feature = [
     title: "Interactive Lessons",
     content:
       "Engage in lessons filled with dynamic quizzes, speaking exercises, and more.",
-    icon: <FontAwesomeIcon icon={faComment} style={{ marginRight: "10px" }} />,
+    icon: (
+      <FontAwesomeIcon
+        icon={faComment}
+        style={{ marginRight: "10px", color: "#8c65d3" }}
+      />
+    ),
   },
   {
     id: 2,
@@ -29,7 +39,12 @@ const feature = [
     title: "Global Community",
     content:
       "Join a community of Korean language learners and native speakers to practice with.",
-    icon: <FontAwesomeIcon icon={faUsers} style={{ marginRight: "10px" }} />,
+    icon: (
+      <FontAwesomeIcon
+        icon={faUsers}
+        style={{ marginRight: "10px", color: "#94fa92" }}
+      />
+    ),
   },
 ];
 
