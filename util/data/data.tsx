@@ -4,7 +4,30 @@ import course3 from "../../public/course3.webp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUsers, faBook, faComment } from "@fortawesome/free-solid-svg-icons";
 
-const navbarList = ["HOME", "LEARNING", "COMMUNITY", "HELP & FAQ"];
+// const navbarList = ["HOME", "LEARNING", "COMMUNITY", "HELP & FAQ"];
+
+const navbarList = [
+  {
+    id: 0,
+    menu: "HOME",
+    subMenu: [],
+  },
+  {
+    id: 1,
+    menu: "LEARNING",
+    subMenu: ["Course", "Practice"],
+  },
+  {
+    id: 2,
+    menu: "COMMUNITY",
+    subMenu: ["Join Community"],
+  },
+  {
+    id: 3,
+    menu: "HELP & FAQ",
+    subMenu: ["FAQ", "Contact Us"],
+  },
+];
 
 const feature = [
   {

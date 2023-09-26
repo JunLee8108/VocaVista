@@ -128,14 +128,14 @@
   border-bottom: 3px solid gray;
 }
 
-.account-form-flexbox p {
+.account-link {
   color: navy;
   text-decoration: underline;
   transition: 0.2s color;
   cursor: pointer;
 }
 
-.account-form-flexbox p:hover {
+.account-link:hover {
   color: red;
 }
 

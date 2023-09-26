@@ -42,8 +42,7 @@ nav {
 }
 
 .navbar-flexbox:nth-child(2) {
-  /* background-color: yellow; */
-  gap: 3rem;
+  gap: 5rem;
   justify-content: flex-end;
   padding-right: 30px;
 }
@@ -60,17 +59,49 @@ nav {
   text-decoration: none;
   color: white;
   padding: 23px 0 23px 0;
-  border-bottom: 4px solid transparent;
+  /* border-bottom: 4px solid transparent; */
   transition: 0.3s color, 0.3s border-bottom;
 }
 
 .navbar-link:hover {
   color: orange;
-  border-bottom: 4px solid orange;
+  /* border-bottom: 4px solid orange; */
 }
 
 .navbar-account-icon {
   width: 25px;
+}
+
+/* Sub-menu styles with transition effects */
+.submenu {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  position: absolute;
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: opacity 0.3s, transform 0.3s, visibility 0.3s;
+  border-radius: 5px;
+}
+
+.submenu li {
+  list-style-type: none;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 35px;
+}
+
+.submenu li a {
+  text-decoration: none;
+  color: black;
+  transition: 0.3s color;
+}
+
+.navbar-flexbox li:hover .submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
 @media screen and (max-width: 767px) {

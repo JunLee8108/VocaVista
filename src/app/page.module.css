@@ -1,3 +1,4 @@
+/* HOME */
 .homeContainerBg {
   width: 100%;
   background-color: #8c65d3;
@@ -84,6 +85,7 @@
   transform: scale(1.1);
 }
 
+/* FEATURE */
 .featuresContainerBg {
   width: 100%;
   height: 420px;
@@ -164,7 +166,7 @@
   transition: color 0.3s ease-in-out;
 }
 
-/* Testimonials Section */
+/* TESTIMONIAL */
 .testimonialsContainer {
   width: 100%;
   height: 670px;
@@ -177,6 +179,7 @@
     rgb(245, 239, 249) 30.1%,
     rgb(207, 211, 236) 100.2%
   );
+  border: none;
 }
 
 .testimonialsContainerAnimation {
@@ -245,8 +248,106 @@
   transform: scale(1.05);
 }
 
-/* ... Your existing styles ... */
+/* LEARNING PATH */
+.learningPathContainer {
+  background: linear-gradient(
+    109.6deg,
+    rgb(245, 239, 249) 30.1%,
+    rgb(207, 211, 236) 100.2%
+  );
+  padding: 1.5rem 2rem;
+  padding-bottom: 4rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: none;
+}
 
+.learningPathHeading {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideUp 1s 1.3s forwards;
+}
+
+.learningPathSectionTitle {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  width: 85%;
+  max-width: 600px;
+  color: #3d3d3d;
+  padding: 5px;
+  padding-left: 10px;
+  margin-left: 55px;
+  border-left: 5px solid #8c65d3;
+}
+
+.pathStepContainer {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideUp 1s 1.3s forwards;
+}
+
+.pathStep {
+  display: flex;
+  justify-content: center;
+  width: 85%;
+  max-width: 600px;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px dashed #e0e0e0;
+  position: relative;
+}
+
+.pathStep:last-child {
+  border-bottom: none;
+}
+
+.stepNumber {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 50%;
+  background-color: #8c65d3;
+  color: #fff;
+  text-align: center;
+  margin-right: 1rem;
+  position: relative;
+  z-index: 1;
+  aspect-ratio: 1 / 1;
+}
+
+.pathStep::before {
+  content: "";
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 100%;
+  width: 2px;
+  background-color: #8c65d3;
+  z-index: 0;
+}
+
+.pathStep p {
+  margin: 0;
+  flex-grow: 1;
+  color: #555;
+}
+
+/* COURSE */
 .courseContainerBg {
   width: 100%;
   background-color: white;
@@ -516,5 +617,61 @@
 
   .courseCard p {
     font-size: 0.8rem;
+  }
+
+  .learningPathContainer {
+    padding: 2rem 1rem; /* Reduce the padding slightly for mobile screens */
+  }
+
+  .learningPathHeading {
+    display: flex;
+    justify-content: flex-start;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -20px;
+    margin-bottom: -20px;
+  }
+
+  .learningPathSectionTitle {
+    width: 85%;
+    max-width: none;
+    margin-left: -20px;
+    margin-bottom: 25px;
+    font-size: 1.2rem; /* Adjust the title font size */
+  }
+
+  .pathStepContainer {
+    width: 100%;
+  }
+
+  .pathStep {
+    width: 85%;
+    max-width: none;
+    flex-direction: column; /* Stack the step number and the description vertically */
+    align-items: center; /* Align items to the start */
+    padding: 2rem 0; /* Increase the padding for touch-friendly spacing */
+    border-bottom: 1px dotted #555;
+  }
+
+  .stepNumber {
+    margin-right: 0; /* Remove the margin on the right */
+    margin-bottom: 1rem; /* Add margin below the step number */
+  }
+
+  .pathStep::before {
+    content: "";
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 100%;
+    width: 2px;
+    background-color: transparent;
+    z-index: 0;
+  }
+
+  .pathStep p {
+    font-size: 0.9rem; /* Slightly reduce the font size of the description */
   }
 }

@@ -22,20 +22,41 @@ export default function Navbar() {
 
           <div className="navbar-flexbox">
             {navbarList.map((list, index) => {
-              const navbarListLowerCase = navbarList[index].toLocaleLowerCase();
+              const navbarListLowerCase =
+                navbarList[index].menu.toLocaleLowerCase();
               return (
                 <div key={index}>
-                  {navbarList[index] === "HOME" ? (
+                  {navbarList[index].menu === "HOME" ? (
                     <li>
                       <Link href="/" className="navbar-link">
-                        {navbarList[index]}
+                        {navbarList[index].menu}
                       </Link>
                     </li>
                   ) : (
                     <li>
                       <Link href={navbarListLowerCase} className="navbar-link">
-                        {navbarList[index]}
+                        {navbarList[index].menu}
                       </Link>
+                      <ul className="submenu">
+                        {navbarList[index].subMenu.map(
+                          (content, subMenuIndex) => {
+                            const subMenuListLowerCase =
+                              navbarList[index].subMenu[
+                                subMenuIndex
+                              ].toLocaleLowerCase();
+                            return (
+                              <li key={subMenuIndex}>
+                                <Link
+                                  href={`/${navbarListLowerCase}/${subMenuListLowerCase}`}
+                                  className="navbar-link"
+                                >
+                                  {navbarList[index].subMenu[subMenuIndex]}
+                                </Link>
+                              </li>
+                            );
+                          }
+                        )}
+                      </ul>
                     </li>
                   )}
                 </div>

@@ -6,6 +6,7 @@ import {
   faPlayCircle,
   faComments,
   faStar,
+  faRoute,
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function Home() {
@@ -76,6 +77,38 @@ export default function Home() {
         </div>
       </div>
 
+      <div className={styles.learningPathContainer}>
+        <div className={styles.learningPathHeading}>
+          <h3 className={styles.learningPathSectionTitle}>
+            Your Learning Journey{" "}
+            <FontAwesomeIcon
+              icon={faRoute}
+              style={{ marginLeft: "5px" }}
+              size="sm"
+            />
+          </h3>
+        </div>
+        <div className={styles.pathStepContainer}>
+          <div className={styles.pathStep}>
+            <span className={styles.stepNumber}>1</span>
+            <p>Introduction to Korean Alphabets (Hangul)</p>
+          </div>
+          <div className={styles.pathStep}>
+            <span className={styles.stepNumber}>2</span>
+            <p>Basic Vocabulary and Grammar</p>
+          </div>
+          <div className={styles.pathStep}>
+            <span className={styles.stepNumber}>3</span>
+            <p>Intermediate Conversational Practices</p>
+          </div>
+          <div className={styles.pathStep}>
+            <span className={styles.stepNumber}>4</span>
+            <p>Advanced Composition and Reading</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Courser Section */}
       <div className={styles.coursesContainerBg}>
         <div className={styles.coursesHeading}>
           <h3 className={styles.sectionTitle}>

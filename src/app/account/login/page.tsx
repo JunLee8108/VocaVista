@@ -1,12 +1,11 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Link from "next/link";
+
+import "./page.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faKey, faComment } from "@fortawesome/free-solid-svg-icons";
 
-import "./page.css";
-
-export default function Account() {
+export default async function Account() {
   return (
     <>
       <div className="account-container">
@@ -44,13 +43,23 @@ export default function Account() {
               <button type="submit">LOGIN</button>
 
               <p>
-                Forgot Password?{" "}
-                <FontAwesomeIcon icon={faKey} style={{ marginLeft: "3px" }} />
+                <Link href="/account/forgot-password" className="account-link">
+                  <FontAwesomeIcon
+                    icon={faKey}
+                    style={{ marginRight: "3px" }}
+                  />
+                  Forgot Password?
+                </Link>
               </p>
 
               <div className="account-boder"></div>
 
-              <p>Register Now to Explore VocaVista</p>
+              <p>
+                <Link href="/account/register" className="account-link">
+                  Register
+                </Link>{" "}
+                Now to Explore VocaVista
+              </p>
             </div>
           </form>
         </div>
