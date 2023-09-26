@@ -1,27 +1,35 @@
 import course1 from "../../public/course1.webp";
 import course2 from "../../public/course2.webp";
 import course3 from "../../public/course3.webp";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUsers, faBook, faComment } from "@fortawesome/free-solid-svg-icons";
 
 const navbarList = ["HOME", "LEARNING", "COMMUNITY", "HELP & FAQ"];
 
 const feature = [
   {
     id: 0,
-    title: "🟣 Adaptive Learning",
+    // 🟣
+    title: "Adaptive Learning",
     content:
-      "Experience tailored lessons that adapt to your individual learning pace.",
+      "Experience tailored Korean lessons that adapt to your individual learning pace.",
+    icon: <FontAwesomeIcon icon={faBook} style={{ marginRight: "10px" }} />,
   },
   {
     id: 1,
-    title: "🟠 Interactive Lessons",
+    // 🟠
+    title: "Interactive Lessons",
     content:
       "Engage in lessons filled with dynamic quizzes, speaking exercises, and more.",
+    icon: <FontAwesomeIcon icon={faComment} style={{ marginRight: "10px" }} />,
   },
   {
     id: 2,
-    title: "🟢 Global Community",
+    // 🟢
+    title: "Global Community",
     content:
-      "Join a community of language learners and native speakers to practice with.",
+      "Join a community of Korean language learners and native speakers to practice with.",
+    icon: <FontAwesomeIcon icon={faUsers} style={{ marginRight: "10px" }} />,
   },
 ];
 
@@ -35,7 +43,7 @@ const testimonial = [
   {
     id: 1,
     content:
-      '"The community here is so welcoming. I\'ve made friends and language partners from all over the world."',
+      '"The community here is so welcoming. I\'ve made friends and language partners from all over the world. 감사합니다!"',
     writer: "- Jae, Seoul",
   },
 ];
@@ -53,18 +61,6 @@ const course = [
     img: course2,
     title: "Intermediate Korean Conversations *",
     content: "Dive into day-to-day dialogues and polish your speaking skills.",
-  },
-  {
-    id: 0,
-    img: course3,
-    title: "Advanced Korean Writing *",
-    content: "Master the art of writing in Korean with comprehensive lessons.",
-  },
-  {
-    id: 0,
-    img: course3,
-    title: "Advanced Korean Writing *",
-    content: "Master the art of writing in Korean with comprehensive lessons.",
   },
   {
     id: 0,

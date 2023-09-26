@@ -22,7 +22,7 @@
 
 .homeFlexbox:nth-child(1) {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   padding: 10px;
   opacity: 0;
@@ -31,7 +31,7 @@
 }
 
 .homeFlexbox:nth-child(1) img {
-  width: 70%;
+  width: 50%;
   height: 80%;
   max-height: 600px;
   object-fit: cover;
@@ -42,7 +42,7 @@
 .homeFlexbox:nth-child(2) {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
 }
 
@@ -60,13 +60,18 @@
 }
 
 .headingOne {
-  letter-spacing: 1px;
+  /* letter-spacing: 1px; */
   margin-bottom: 1rem;
 }
 
 .headingTwo {
   font-weight: 400;
   margin-bottom: 2rem;
+}
+
+.headingTwo span {
+  letter-spacing: 1px;
+  text-decoration: underline;
 }
 
 .icon {
@@ -96,7 +101,7 @@
 
 .featuresHeader {
   font-size: 1.3rem;
-  letter-spacing: 1px;
+  /* letter-spacing: 1px; */
   opacity: 0;
   transform: translateY(20px);
   animation: slideUp 1s 0.9s forwards;
@@ -192,7 +197,7 @@
   margin-top: 1.5rem;
   margin-bottom: 3rem;
   font-size: 1.5rem;
-  letter-spacing: 1px;
+  /* letter-spacing: 1px; */
   border-left: 5px solid #8c65d3;
   padding: 5px;
   padding-left: 15px;
@@ -260,7 +265,7 @@
   padding: 5px;
   padding-left: 15px;
   color: #3d3d3d;
-  letter-spacing: 1px;
+  /* letter-spacing: 1px; */
   border-left: 5px solid #8c65d3;
   opacity: 0;
   transform: translateY(20px);
@@ -391,10 +396,12 @@
   }
 
   .homeFlexbox:nth-child(2) {
-    display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+  }
+
+  .textContainer {
+    width: 80%;
   }
 
   .headingOne {
@@ -404,6 +411,7 @@
   .headingTwo {
     font-size: 1rem;
     margin-bottom: 3rem;
+    line-height: 25px;
   }
 
   .featuresContainerBg {
@@ -413,7 +421,8 @@
   .featuresHeader {
     font-size: 1rem;
     width: 100%;
-    margin-top: 30px;
+    margin-top: 5px;
+    margin-bottom: -25px;
   }
 
   .featuresHeader h3 {
@@ -457,9 +466,9 @@
   }
 
   .testimonialsSectionTitle {
-    font-size: 1rem;
-    margin-top: 1.2rem;
-    margin-bottom: 2.5rem;
+    font-size: 1.2rem;
+    margin-top: -5px;
+    margin-bottom: 1.5rem;
     width: 78.5%;
   }
 
@@ -490,9 +499,9 @@
   }
 
   .sectionTitle {
-    font-size: 1rem;
-    margin-top: 2rem;
-    margin-bottom: 0rem;
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    margin-bottom: -15px;
   }
 
   .courseCard {

@@ -2,7 +2,11 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import { feature, testimonial, course } from "../../util/data/data";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlayCircle } from "@fortawesome/free-solid-svg-icons";
+import {
+  faPlayCircle,
+  faComments,
+  faStar,
+} from "@fortawesome/free-solid-svg-icons";
 
 export default function Home() {
   return (
@@ -10,14 +14,14 @@ export default function Home() {
       <div className={styles.homeContainerBg}>
         <div className={styles.homeContainer}>
           <div className={styles.homeFlexbox}>
-            <img src="/bg.webp"></img>
+            <img src="/hangul.jpg"></img>
           </div>
 
           <div className={styles.homeFlexbox}>
             <div className={styles.textContainer}>
               <h1 className={styles.headingOne}>VocaVista?</h1>
               <h2 className={styles.headingTwo}>
-                E-Learning Platform with Adaptive Learning!
+                <span>Korean</span> E-Learning Platform with Adaptive Learning!
               </h2>
             </div>
           </div>
@@ -27,14 +31,17 @@ export default function Home() {
       {/* Features Section */}
       <div className={styles.featuresContainerBg}>
         <div className={styles.featuresHeader}>
-          <h3>Core Features of VocaVista</h3>
+          <h3>Why VocaVista?</h3>
         </div>
 
         <div className={styles.featuresContainer}>
           {feature.map((content, index) => {
             return (
               <div className={styles.featureBox} key={index}>
-                <h3>{feature[index].title}</h3>
+                <h3>
+                  {feature[index].icon}
+                  {feature[index].title}
+                </h3>
                 <p>{feature[index].content}</p>
               </div>
             );
@@ -46,7 +53,8 @@ export default function Home() {
       <div className={styles.testimonialsContainer}>
         <div className={styles.testimonialsContainerAnimation}>
           <h3 className={styles.testimonialsSectionTitle}>
-            What Our Users Say
+            What Our Users Say{" "}
+            <FontAwesomeIcon icon={faComments} style={{ marginLeft: "5px" }} />
           </h3>
 
           {testimonial.map((content, index) => {
@@ -66,7 +74,13 @@ export default function Home() {
 
       <div className={styles.coursesContainerBg}>
         <div className={styles.coursesHeading}>
-          <h3 className={styles.sectionTitle}>Top Featured Courses ⭐</h3>
+          <h3 className={styles.sectionTitle}>
+            Top Featured Courses{" "}
+            <FontAwesomeIcon
+              icon={faStar}
+              style={{ marginLeft: "5px", color: "orange" }}
+            />
+          </h3>
         </div>
 
         <div className={styles.coursesContainer}>
