@@ -110,7 +110,7 @@
 .featuresHeader h3 {
   border-left: 5px solid #8c65d3;
   padding: 5px;
-  padding-left: 15px;
+  padding-left: 10px;
 }
 
 .featuresContainer {
@@ -194,13 +194,13 @@
 
 .testimonialsSectionTitle {
   color: #333;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   margin-bottom: 3rem;
   font-size: 1.5rem;
   /* letter-spacing: 1px; */
   border-left: 5px solid #8c65d3;
   padding: 5px;
-  padding-left: 15px;
+  padding-left: 10px;
 }
 
 .testimonial {
@@ -263,7 +263,7 @@
   margin-top: 3rem;
   margin-bottom: 0rem;
   padding: 5px;
-  padding-left: 15px;
+  padding-left: 10px;
   color: #3d3d3d;
   /* letter-spacing: 1px; */
   border-left: 5px solid #8c65d3;
@@ -350,7 +350,7 @@
     max-width: 472px;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 15px;
+    padding-left: 10px;
   }
 
   .featuresContainer {
@@ -431,7 +431,7 @@
     width: 78%;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 15px;
+    padding-left: 10px;
   }
 
   .featuresContainer {

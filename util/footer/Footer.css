@@ -49,3 +49,17 @@ footer {
   list-style: none;
   font-size: 14px;
 }
+
+@media screen and (max-width: 767px) {
+  .footer-flexbox:nth-child(1) h3 {
+    font-size: 15px;
+  }
+
+  .footer-flexbox:nth-child(1) p {
+    font-size: 8px;
+  }
+
+  .footer-flexbox:nth-child(2) {
+    display: none;
+  }
+}

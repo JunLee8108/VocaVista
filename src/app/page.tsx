@@ -14,7 +14,7 @@ export default function Home() {
       <div className={styles.homeContainerBg}>
         <div className={styles.homeContainer}>
           <div className={styles.homeFlexbox}>
-            <img src="/hangul.jpg"></img>
+            <img src="/Hangul.webp"></img>
           </div>
 
           <div className={styles.homeFlexbox}>
