@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect, useRef, MouseEvent } from "react";
+import { useState, useEffect, MouseEvent } from "react";
 import { navbarList } from "../data/data";
 import "./Navbar.css";
 
@@ -12,7 +12,6 @@ import { faComment, faSquareXmark } from "@fortawesome/free-solid-svg-icons";
 export default function Navbar() {
   const [isMenuClick, setMenuClick] = useState(false);
   const [handleMenuClick, setHandleMenuClick] = useState(false);
-  const isFirstMount = useRef(true);
 
   const handleClickMenuBg = (e: MouseEvent<HTMLElement>) => {
     const target = document.querySelector(".navbar-flexbox-mobile-menu-bg");
@@ -42,12 +41,8 @@ export default function Navbar() {
   }, [handleMenuClick]);
 
   useEffect(() => {
-    if (!isFirstMount.current && window.innerWidth <= 768) {
+    if (window.innerWidth <= 768) {
       window.addEventListener("scroll", handleScroll);
-    }
-
-    if (isFirstMount.current) {
-      isFirstMount.current = false;
     }
 
     return () => {
@@ -62,7 +57,15 @@ export default function Navbar() {
           {/* Navbar flexbox 1 */}
           <div className="navbar-flexbox">
             <h3>
-              <Link href="/" className="navbar-link-title">
+              <Link
+                href="/"
+                className="navbar-link-title"
+                onClick={() => {
+                  if (window.innerWidth <= 768) {
+                    setHandleMenuClick(false);
+                  }
+                }}
+              >
                 VocaVista
               </Link>
             </h3>
@@ -170,7 +173,7 @@ export default function Navbar() {
                         <li>
                           <Link
                             href="/"
-                            className="navbar-link"
+                            className="navbar-link-mobile"
                             onClick={() => setHandleMenuClick(false)}
                           >
                             {navbarList[index].menu}
@@ -182,7 +185,7 @@ export default function Navbar() {
                             href={`/${navbarListLowerCase}/${navbarList[
                               index
                             ].subMenu[0].toLocaleLowerCase()}`}
-                            className="navbar-link"
+                            className="navbar-link-mobile"
                             onClick={() => setHandleMenuClick(false)}
                           >
                             {navbarList[index].menu}

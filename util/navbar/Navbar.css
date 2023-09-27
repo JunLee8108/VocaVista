@@ -149,6 +149,11 @@ nav {
     z-index: 15;
   }
 
+  .navbar-link-mobile {
+    text-decoration: none;
+    color: white;
+  }
+
   .navbar-flexbox-mobile-menu li {
     list-style: none;
     padding-left: 21px;
