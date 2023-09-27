@@ -7,7 +7,11 @@ import "./Navbar.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faBars } from "@fortawesome/free-solid-svg-icons";
-import { faComment, faSquareXmark } from "@fortawesome/free-solid-svg-icons";
+import {
+  faComment,
+  faSquareXmark,
+  faCircleArrowLeft,
+} from "@fortawesome/free-solid-svg-icons";
 
 export default function Navbar() {
   const [isMenuClick, setMenuClick] = useState(false);
@@ -178,8 +182,12 @@ export default function Navbar() {
                 setHandleSubmenuClick(false);
               }}
             >
-              {handleMenuClick ? (
-                <FontAwesomeIcon icon={faSquareXmark} size="xl" />
+              {handleMenuClick || handleSubmenuClick ? (
+                handleSubmenuClick ? (
+                  <FontAwesomeIcon icon={faCircleArrowLeft} size="xl" />
+                ) : (
+                  <FontAwesomeIcon icon={faSquareXmark} size="xl" />
+                )
               ) : (
                 <FontAwesomeIcon icon={faBars} size="xl" />
               )}
