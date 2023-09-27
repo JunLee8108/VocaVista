@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-import { feature, testimonial, course } from "../../util/data/data";
+import { feature, testimonial, course, pathStep } from "../../util/data/data";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -13,13 +13,20 @@ import {
 export default function Home() {
   return (
     <>
+      {/* Home Section */}
       <div className={styles.homeContainerBg}>
-        <div className={styles.homeContainer}>
-          <div className={styles.homeFlexbox}>
+        <div
+          className={`${styles.homeContainer} display-flex justify-content-center mg-left-right-auto`}
+        >
+          <div
+            className={`${styles.homeFlexbox} display-flex justify-content-center align-items-center`}
+          >
             <img src="/Hangul.webp"></img>
           </div>
 
-          <div className={styles.homeFlexbox}>
+          <div
+            className={`${styles.homeFlexbox} display-flex justify-content-center`}
+          >
             <div className={styles.textContainer}>
               <h1 className={styles.headingOne}>VocaVista?</h1>
               <h2 className={styles.headingTwo}>
@@ -31,12 +38,16 @@ export default function Home() {
       </div>
 
       {/* Features Section */}
-      <div className={styles.featuresContainerBg}>
+      <div
+        className={`${styles.featuresContainerBg} display-flex justify-content-center align-items-center`}
+      >
         <div className={styles.featuresHeader}>
           <h3>Why VocaVista?</h3>
         </div>
 
-        <div className={styles.featuresContainer}>
+        <div
+          className={`${styles.featuresContainer} display-flex mg-left-right-auto`}
+        >
           {feature.map((content, index) => {
             return (
               <div className={styles.featureBox} key={index}>
@@ -52,8 +63,12 @@ export default function Home() {
       </div>
 
       {/* Testimonial Section */}
-      <div className={styles.testimonialsContainer}>
-        <div className={styles.testimonialsContainerAnimation}>
+      <div
+        className={`${styles.testimonialsContainer} display-flex align-items-center`}
+      >
+        <div
+          className={`${styles.testimonialsContainerAnimation} display-flex justify-content-center align-items-center`}
+        >
           <h3 className={styles.testimonialsSectionTitle}>
             What Our Users Say{" "}
             <FontAwesomeIcon
@@ -65,7 +80,10 @@ export default function Home() {
 
           {testimonial.map((content, index) => {
             return (
-              <div className={styles.testimonial} key={index}>
+              <div
+                className={`${styles.testimonial} display-flex align-items-center`}
+                key={index}
+              >
                 <FontAwesomeIcon
                   icon={faPlayCircle}
                   className={styles.playIcon}
@@ -78,8 +96,12 @@ export default function Home() {
         </div>
       </div>
 
-      <div className={styles.learningPathContainer}>
-        <div className={styles.learningPathHeading}>
+      <div
+        className={`${styles.learningPathContainer} display-flex justify-content-center align-items-center`}
+      >
+        <div
+          className={`${styles.learningPathHeading} display-flex align-items-center`}
+        >
           <h3 className={styles.learningPathSectionTitle}>
             Your Learning Journey{" "}
             <FontAwesomeIcon
@@ -89,29 +111,30 @@ export default function Home() {
             />
           </h3>
         </div>
-        <div className={styles.pathStepContainer}>
-          <div className={styles.pathStep}>
-            <span className={styles.stepNumber}>1</span>
-            <p>Introduction to Korean Alphabets (Hangul)</p>
-          </div>
-          <div className={styles.pathStep}>
-            <span className={styles.stepNumber}>2</span>
-            <p>Basic Vocabulary and Grammar</p>
-          </div>
-          <div className={styles.pathStep}>
-            <span className={styles.stepNumber}>3</span>
-            <p>Intermediate Conversational Practices</p>
-          </div>
-          <div className={styles.pathStep}>
-            <span className={styles.stepNumber}>4</span>
-            <p>Advanced Composition and Reading</p>
-          </div>
+        <div
+          className={`${styles.pathStepContainer} display-flex align-items-center`}
+        >
+          {pathStep.map((content, index) => {
+            return (
+              <div
+                className={`${styles.pathStep} display-flex justify-content-center align-items-center`}
+                key={index}
+              >
+                <span className={styles.stepNumber}>
+                  {pathStep[index].number}
+                </span>
+                <p>{pathStep[index].content}</p>
+              </div>
+            );
+          })}
         </div>
       </div>
 
       {/* Courser Section */}
       <div className={styles.coursesContainerBg}>
-        <div className={styles.coursesHeading}>
+        <div
+          className={`${styles.coursesHeading} display-flex justify-content-center`}
+        >
           <h3 className={styles.sectionTitle}>
             Top Featured Courses{" "}
             <FontAwesomeIcon
@@ -122,7 +145,9 @@ export default function Home() {
           </h3>
         </div>
 
-        <div className={styles.coursesContainer}>
+        <div
+          className={`${styles.coursesContainer} display-flex justify-content-center mg-left-right-auto`}
+        >
           {course.map((content, index) => {
             return (
               <div className={styles.courseCard} key={index}>

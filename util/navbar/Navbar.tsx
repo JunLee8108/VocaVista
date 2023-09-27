@@ -11,7 +11,11 @@ import { faComment, faSquareXmark } from "@fortawesome/free-solid-svg-icons";
 
 export default function Navbar() {
   const [isMenuClick, setMenuClick] = useState(false);
+  const [isSubmenuClick, setSubmenuClick] = useState(false);
   const [handleMenuClick, setHandleMenuClick] = useState(false);
+  const [handleSubmenuClick, setHandleSubmenuClick] = useState(false);
+  const [mobileMenuName, setMobileMenuName] = useState("");
+  const [mobileMenuNumber, setMobileMenuNumber] = useState(0);
 
   const handleClickMenuBg = (e: MouseEvent<HTMLElement>) => {
     const target = document.querySelector(".navbar-flexbox-mobile-menu-bg");
@@ -24,9 +28,17 @@ export default function Navbar() {
     setHandleMenuClick(false);
   };
 
+  const hanldeMobileMenu = (index: number, navbarListLowerCase: string) => {
+    setHandleMenuClick(false);
+    setHandleSubmenuClick(true);
+    setMobileMenuNumber(index);
+    setMobileMenuName(navbarListLowerCase);
+  };
+
   const mobilePageTransition = () => {
     let timer = setTimeout(() => {
       setHandleMenuClick(false);
+      setHandleSubmenuClick(false);
     }, 200);
   };
 
@@ -47,6 +59,22 @@ export default function Navbar() {
   }, [handleMenuClick]);
 
   useEffect(() => {
+    let timer: ReturnType<typeof setTimeout>;
+
+    if (handleSubmenuClick) {
+      setSubmenuClick(true);
+    } else {
+      timer = setTimeout(() => {
+        setSubmenuClick(false);
+      }, 400);
+    }
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [handleSubmenuClick]);
+
+  useEffect(() => {
     if (window.innerWidth <= 768) {
       window.addEventListener("scroll", handleScroll);
     }
@@ -55,6 +83,9 @@ export default function Navbar() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  // console.log("Menu: ", isMenuClick);
+  // console.log("SubMenu: ", isSubmenuClick);
 
   return (
     <>
@@ -81,8 +112,10 @@ export default function Navbar() {
           {/* Navbar flexbox 2 */}
           <div className="navbar-flexbox">
             {navbarList.map((list, index) => {
-              const navbarListLowerCase =
-                navbarList[index].menu.toLocaleLowerCase();
+              const navbarListLowerCase = list.menu
+                .replaceAll(" ", "-")
+                .toLocaleLowerCase();
+
               return (
                 <div key={index}>
                   {navbarList[index].menu === "HOME" ? (
@@ -94,32 +127,30 @@ export default function Navbar() {
                   ) : (
                     <li>
                       <Link
-                        href={`/${navbarListLowerCase}/${navbarList[
-                          index
-                        ].subMenu[0].toLocaleLowerCase()}`}
+                        href={`/${navbarListLowerCase}/${list.subMenu[0]
+                          .replaceAll(" ", "-")
+                          .toLocaleLowerCase()}`}
                         className="navbar-link"
                       >
                         {navbarList[index].menu}
                       </Link>
+
                       <ul className="submenu">
-                        {navbarList[index].subMenu.map(
-                          (content, subMenuIndex) => {
-                            const subMenuListLowerCase =
-                              navbarList[index].subMenu[
-                                subMenuIndex
-                              ].toLocaleLowerCase();
-                            return (
-                              <li key={subMenuIndex}>
-                                <Link
-                                  href={`/${navbarListLowerCase}/${subMenuListLowerCase}`}
-                                  className="navbar-link"
-                                >
-                                  {navbarList[index].subMenu[subMenuIndex]}
-                                </Link>
-                              </li>
-                            );
-                          }
-                        )}
+                        {list.subMenu.map((content, subMenuIndex) => {
+                          const subMenuListLowerCase = content
+                            .replaceAll(" ", "-")
+                            .toLocaleLowerCase();
+                          return (
+                            <li key={subMenuIndex}>
+                              <Link
+                                href={`/${navbarListLowerCase}/${subMenuListLowerCase}`}
+                                className="navbar-link"
+                              >
+                                {content}
+                              </Link>
+                            </li>
+                          );
+                        })}
                       </ul>
                     </li>
                   )}
@@ -144,6 +175,7 @@ export default function Navbar() {
               className="navbar-flexbox-mobile-menu-bar"
               onClick={() => {
                 setHandleMenuClick((current) => !current);
+                setHandleSubmenuClick(false);
               }}
             >
               {handleMenuClick ? (
@@ -171,11 +203,13 @@ export default function Navbar() {
                 }
               >
                 {navbarList.map((list, index) => {
-                  const navbarListLowerCase =
-                    navbarList[index].menu.toLocaleLowerCase();
+                  const navbarListLowerCase = list.menu
+                    .replaceAll(" ", "-")
+                    .toLocaleLowerCase();
+
                   return (
                     <div key={index}>
-                      {navbarList[index].menu === "HOME" ? (
+                      {list.menu === "HOME" ? (
                         <li>
                           <Link
                             href="/"
@@ -186,19 +220,51 @@ export default function Navbar() {
                           </Link>
                         </li>
                       ) : (
-                        <li>
-                          <Link
-                            href={`/${navbarListLowerCase}/${navbarList[
-                              index
-                            ].subMenu[0].toLocaleLowerCase()}`}
-                            className="navbar-link-mobile"
-                            onClick={mobilePageTransition}
-                          >
-                            {navbarList[index].menu}
-                          </Link>
+                        <li
+                          onClick={() =>
+                            hanldeMobileMenu(index, navbarListLowerCase)
+                          }
+                        >
+                          {list.menu}
                         </li>
                       )}
                     </div>
+                  );
+                })}
+              </div>
+            </div>
+          ) : null}
+
+          {isSubmenuClick ? (
+            <div
+              className={
+                handleSubmenuClick
+                  ? "navbar-flexbox-mobile-menu-bg animated-show-bg"
+                  : "navbar-flexbox-mobile-menu-bg animated-hide-bg"
+              }
+              onClick={(e) => handleClickMenuBg(e)}
+            >
+              <div
+                className={
+                  handleSubmenuClick
+                    ? "navbar-flexbox-mobile-menu animated-show"
+                    : "navbar-flexbox-mobile-menu animated-hide"
+                }
+              >
+                {navbarList[mobileMenuNumber].subMenu.map((list, index) => {
+                  const navbarListLowerCase = list
+                    .replaceAll(" ", "-")
+                    .toLocaleLowerCase();
+                  return (
+                    <li key={index}>
+                      <Link
+                        href={`/${mobileMenuName}/${navbarListLowerCase}`}
+                        className="navbar-link-mobile"
+                        onClick={mobilePageTransition}
+                      >
+                        {list.toLocaleUpperCase()}
+                      </Link>
+                    </li>
                   );
                 })}
               </div>

@@ -24,7 +24,7 @@ const navbarList = [
   },
   {
     id: 3,
-    menu: "HELP & FAQ",
+    menu: "FAQ",
     subMenu: ["FAQ", "Contact Us"],
   },
 ];
@@ -95,17 +95,40 @@ const course = [
       "Start your journey with the basics of Korean grammar and vocabulary.",
   },
   {
-    id: 0,
+    id: 1,
     img: course2,
     title: "Intermediate Korean Conversations *",
     content: "Dive into day-to-day dialogues and polish your speaking skills.",
   },
   {
-    id: 0,
+    id: 2,
     img: course3,
     title: "Advanced Korean Writing *",
     content: "Master the art of writing in Korean with comprehensive lessons.",
   },
 ];
 
-export { navbarList, feature, testimonial, course };
+const pathStep = [
+  {
+    id: 0,
+    number: 1,
+    content: "Introduction to Korean Alphabets (Hangul)",
+  },
+  {
+    id: 1,
+    number: 2,
+    content: "Basic Vocabulary and Grammar",
+  },
+  {
+    id: 2,
+    number: 3,
+    content: "Intermediate Conversational Practices",
+  },
+  {
+    id: 3,
+    number: 4,
+    content: "Advanced Composition and Reading",
+  },
+];
+
+export { navbarList, feature, testimonial, course, pathStep };

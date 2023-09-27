@@ -9,11 +9,7 @@
   max-width: 2560px;
   height: 50vh;
   max-height: 900px;
-  display: flex;
-  justify-content: center;
   transition: all 0.3s ease-in-out;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .homeFlexbox {
@@ -22,9 +18,6 @@
 }
 
 .homeFlexbox:nth-child(1) {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   padding: 10px;
   opacity: 0;
   transform: translateY(20px);
@@ -41,8 +34,6 @@
 }
 
 .homeFlexbox:nth-child(2) {
-  display: flex;
-  justify-content: center;
   align-items: flex-start;
   flex-direction: column;
 }
@@ -55,13 +46,11 @@
 
 .headingOne,
 .headingTwo {
-  /* color: #3d3d3d; */
   color: white;
   transition: color 0.3s ease-in-out;
 }
 
 .headingOne {
-  /* letter-spacing: 1px; */
   margin-bottom: 1rem;
 }
 
@@ -74,25 +63,11 @@
   text-decoration: underline;
 }
 
-.icon {
-  font-size: 1.5rem;
-  margin-right: 10px;
-  color: white;
-  transition: transform 0.3s ease-in-out;
-}
-
-.icon:hover {
-  transform: scale(1.1);
-}
-
 /* FEATURE */
 .featuresContainerBg {
   width: 100%;
   height: 420px;
-  display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   background: linear-gradient(
     109.6deg,
     rgb(245, 239, 249) 30.1%,
@@ -102,7 +77,6 @@
 
 .featuresHeader {
   font-size: 1.3rem;
-  /* letter-spacing: 1px; */
   opacity: 0;
   transform: translateY(20px);
   animation: slideUp 1s 0.9s forwards;
@@ -117,11 +91,8 @@
 .featuresContainer {
   width: 80%;
   max-width: 1920px;
-  display: flex;
   justify-content: space-around;
   padding: 2rem 0;
-  margin-left: auto;
-  margin-right: auto;
   transition: all 0.3s ease-in-out;
 }
 
@@ -170,9 +141,7 @@
 .testimonialsContainer {
   width: 100%;
   height: 670px;
-  display: flex;
   flex-direction: column;
-  align-items: center;
   padding: 2rem 0;
   background: linear-gradient(
     109.6deg,
@@ -184,9 +153,6 @@
 
 .testimonialsContainerAnimation {
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
   opacity: 0;
   transform: translateY(20px);
@@ -208,9 +174,7 @@
 .testimonial {
   width: 700px;
   max-width: 50%;
-  display: flex;
   flex-direction: column;
-  align-items: center;
   padding: 1.5rem;
   margin-bottom: 3rem;
   border: 1px solid #d2d2d2;
@@ -259,18 +223,13 @@
   padding-bottom: 4rem;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
   border: none;
 }
 
 .learningPathHeading {
   width: 60%;
-  display: flex;
   flex-direction: column;
-  align-items: center;
   margin-bottom: 10px;
   opacity: 0;
   transform: translateY(20px);
@@ -291,20 +250,15 @@
 
 .pathStepContainer {
   width: 60%;
-  display: flex;
   flex-direction: column;
-  align-items: center;
   opacity: 0;
   transform: translateY(20px);
   animation: slideUp 1s 1.3s forwards;
 }
 
 .pathStep {
-  display: flex;
-  justify-content: center;
   width: 85%;
   max-width: 600px;
-  align-items: center;
   padding: 1rem 0;
   border-bottom: 1px dashed #e0e0e0;
   position: relative;
@@ -354,8 +308,6 @@
 }
 
 .coursesHeading {
-  display: flex;
-  justify-content: center;
 }
 
 .sectionTitle {
@@ -375,11 +327,7 @@
 .coursesContainer {
   width: 80%;
   max-width: 1920px;
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   align-items: flex-start;
   padding: 2rem 0;
   gap: 5rem;
@@ -478,16 +426,6 @@
 
   .homeFlexbox {
     width: 100%;
-  }
-
-  .homeFlexbox:nth-child(1) {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: slideUp 1s 0.2s forwards;
   }
 
   .homeFlexbox:nth-child(1) img {
@@ -593,7 +531,6 @@
   }
 
   .coursesHeading {
-    display: flex;
     justify-content: flex-start;
     width: 83%;
     margin-left: auto;
@@ -624,7 +561,6 @@
   }
 
   .learningPathHeading {
-    display: flex;
     justify-content: flex-start;
     width: 90%;
     margin-left: auto;
