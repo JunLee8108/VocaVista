@@ -20,7 +20,7 @@ const navbarList = [
   {
     id: 2,
     menu: "COMMUNITY",
-    subMenu: ["Join Community"],
+    subMenu: ["Discussions"],
   },
   {
     id: 3,

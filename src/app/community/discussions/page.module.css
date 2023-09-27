@@ -1,0 +1,102 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.8rem;
+  min-height: calc(100vh - 7rem);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideUp 0.7s 0.2s forwards;
+}
+
+.header {
+  text-align: center;
+  color: #3d3d3d;
+  margin-bottom: 2rem;
+}
+
+.searchBar {
+  width: 100%;
+  padding: 1rem;
+  margin-top: 15px;
+  margin-bottom: 2rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  outline: none;
+  transition: border 0.3s;
+  display: inline-block;
+}
+
+.searchBar:focus {
+  border: 1px solid #8c65d3;
+}
+
+.threadList {
+  list-style-type: none;
+  padding: 0;
+}
+
+.threadItem {
+  padding: 1.5rem 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  background-color: #f9f9f9;
+  transition: border 0.3s;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.threadItem:hover {
+  border: 2px solid #8c65d3;
+}
+
+.threadTitle {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  line-height: 25px;
+}
+
+.threadDetails {
+  color: #7a7a7a;
+  line-height: 25px;
+}
+
+.newThreadBtn {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 10px;
+  background-color: #8c65d3;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: opacity 0.3s;
+  font-weight: 500;
+}
+
+.newThreadBtn:hover {
+  opacity: 0.4;
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .header {
+    font-size: 1.3rem;
+  }
+
+  .threadTitle {
+    font-size: 1rem;
+  }
+
+  .threadDetails {
+    font-size: 0.9rem;
+  }
+}

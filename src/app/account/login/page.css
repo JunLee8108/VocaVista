@@ -14,7 +14,7 @@
   border-radius: 5px;
   opacity: 0;
   transform: translateY(20px);
-  animation: slideUp 0.7s 0.5s forwards;
+  animation: slideUp 0.7s 0.2s forwards;
 }
 
 @keyframes slideUp {

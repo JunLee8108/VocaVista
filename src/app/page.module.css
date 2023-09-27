@@ -637,7 +637,7 @@
     width: 85%;
     max-width: none;
     margin-left: -20px;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
     font-size: 1.2rem; /* Adjust the title font size */
   }
 
@@ -651,7 +651,7 @@
     flex-direction: column; /* Stack the step number and the description vertically */
     align-items: center; /* Align items to the start */
     padding: 2rem 0; /* Increase the padding for touch-friendly spacing */
-    border-bottom: 1px dotted #555;
+    border-bottom: none;
   }
 
   .stepNumber {
