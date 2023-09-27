@@ -176,18 +176,23 @@ export default function Navbar() {
                   return (
                     <div key={index}>
                       {navbarList[index].menu === "HOME" ? (
-                        <li onClick={mobilePageTransition}>
-                          <Link href="/" className="navbar-link-mobile">
+                        <li>
+                          <Link
+                            href="/"
+                            className="navbar-link-mobile"
+                            onClick={mobilePageTransition}
+                          >
                             {navbarList[index].menu}
                           </Link>
                         </li>
                       ) : (
-                        <li onClick={mobilePageTransition}>
+                        <li>
                           <Link
                             href={`/${navbarListLowerCase}/${navbarList[
                               index
                             ].subMenu[0].toLocaleLowerCase()}`}
                             className="navbar-link-mobile"
+                            onClick={mobilePageTransition}
                           >
                             {navbarList[index].menu}
                           </Link>
