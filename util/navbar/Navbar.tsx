@@ -24,6 +24,12 @@ export default function Navbar() {
     setHandleMenuClick(false);
   };
 
+  const mobilePageTransition = () => {
+    let timer = setTimeout(() => {
+      setHandleMenuClick(false);
+    }, 200);
+  };
+
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout>;
 
@@ -62,7 +68,7 @@ export default function Navbar() {
                 className="navbar-link-title"
                 onClick={() => {
                   if (window.innerWidth <= 768) {
-                    setHandleMenuClick(false);
+                    mobilePageTransition();
                   }
                 }}
               >
@@ -170,23 +176,18 @@ export default function Navbar() {
                   return (
                     <div key={index}>
                       {navbarList[index].menu === "HOME" ? (
-                        <li>
-                          <Link
-                            href="/"
-                            className="navbar-link-mobile"
-                            onClick={() => setHandleMenuClick(false)}
-                          >
+                        <li onClick={mobilePageTransition}>
+                          <Link href="/" className="navbar-link-mobile">
                             {navbarList[index].menu}
                           </Link>
                         </li>
                       ) : (
-                        <li>
+                        <li onClick={mobilePageTransition}>
                           <Link
                             href={`/${navbarListLowerCase}/${navbarList[
                               index
                             ].subMenu[0].toLocaleLowerCase()}`}
                             className="navbar-link-mobile"
-                            onClick={() => setHandleMenuClick(false)}
                           >
                             {navbarList[index].menu}
                           </Link>
