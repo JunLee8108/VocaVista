@@ -313,7 +313,7 @@
 .sectionTitle {
   font-size: 1.5rem;
   margin-top: 3rem;
-  margin-bottom: 0rem;
+  margin-bottom: 1rem;
   padding: 5px;
   padding-left: 10px;
   color: #3d3d3d;
@@ -334,11 +334,9 @@
   align-items: center;
   place-items: center;
   padding: 2rem 0;
-  padding-bottom: 60px;
   opacity: 0;
   transform: translateY(20px);
   animation: slideUp 1s 1.3s forwards;
-  /* margin-bottom: 20px; */
 }
 
 .courseCard {
