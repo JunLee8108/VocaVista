@@ -19,6 +19,11 @@ export default function KoreanQuest() {
           />
         </h1>
 
+        <p className={styles.introSubHeader}>
+          A fun and interactive game designed to enhance your Korean language
+          skills
+        </p>
+
         <GameMain />
       </div>
     </>
