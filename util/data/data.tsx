@@ -4,8 +4,6 @@ import course3 from "../../public/course3.webp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUsers, faBook, faComment } from "@fortawesome/free-solid-svg-icons";
 
-// const navbarList = ["HOME", "LEARNING", "COMMUNITY", "HELP & FAQ"];
-
 const navbarList = [
   {
     id: 0,
@@ -15,7 +13,7 @@ const navbarList = [
   {
     id: 1,
     menu: "LEARNING",
-    subMenu: ["Course", "Practice"],
+    subMenu: ["Course", "Practice", "Game"],
   },
   {
     id: 2,
@@ -143,4 +141,52 @@ const pathStep = [
 
 const sortBtn: string[] = ["All", "Beginner", "Intermediate", "Advanced"];
 
-export { navbarList, feature, testimonial, course, pathStep, sortBtn };
+interface Question {
+  word: string;
+  choices: string[];
+  correctAnswer: string;
+}
+
+const questions: Question[] = [
+  {
+    word: "안녕하세요",
+    choices: ["Goodbye", "Hello", "Please", "Thank you"],
+    correctAnswer: "Hello",
+  },
+  {
+    word: "감사합니다",
+    choices: ["Goodbye", "Hello", "Please", "Thank you"],
+    correctAnswer: "Thank you",
+  },
+  {
+    word: "제발",
+    choices: ["Goodbye", "Hello", "Please", "Thank you"],
+    correctAnswer: "Please",
+  },
+  {
+    word: "물",
+    choices: ["Water", "Fire", "Earth", "Air"],
+    correctAnswer: "Water",
+  },
+  {
+    word: "사랑해",
+    choices: ["Goodbye", "I Love You", "Thank You", "Hello"],
+    correctAnswer: "I Love You",
+  },
+  {
+    word: "친구",
+    choices: ["Mother", "Father", "Friend", "Enemy"],
+    correctAnswer: "Friend",
+  },
+  // Add more questions as needed
+];
+
+export {
+  navbarList,
+  feature,
+  testimonial,
+  course,
+  pathStep,
+  sortBtn,
+  questions,
+};

@@ -54,8 +54,6 @@ export default function CourseSort() {
     setSortedData(course);
   }, []);
 
-  console.log(sortedData);
-
   return (
     <>
       <div className={`${styles.courseSort}`}>
