@@ -32,10 +32,10 @@ export default function GameIntro({
             <strong>Complete</strong>: Finish all questions to see your score!
           </li>
         </ul>
-        <button onClick={startGame} className={styles.startButton}>
-          START
-        </button>
       </div>
+      <button onClick={startGame} className={styles.startButton}>
+        START
+      </button>
     </div>
   );
 }

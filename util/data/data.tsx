@@ -13,7 +13,7 @@ const navbarList = [
   {
     id: 1,
     menu: "LEARNING",
-    subMenu: ["Course", "Practice", "Game"],
+    subMenu: ["Course", "Game"],
   },
   {
     id: 2,

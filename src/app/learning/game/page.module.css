@@ -16,7 +16,6 @@
 }
 
 .intro {
-  background-color: white;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -39,34 +38,39 @@
 
 .introExplanation {
   padding: 30px;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .introExplanation p {
-  line-height: 30px;
-  margin-bottom: 40px;
+  line-height: 25px;
+  padding: 14px;
+  margin-bottom: 0;
+  text-align: left;
 }
 
 .introExplanation ul {
+  margin-top: 0;
+  margin-bottom: 0;
   padding: 0px;
   padding-left: 15px;
+  text-align: left;
 }
 
 .introExplanation li {
   margin: 20px 0;
+  list-style-type: none;
   line-height: 25px;
-}
-
-.introExplanation p,
-.introExplanation ul {
-  text-align: left;
 }
 
 .startButton {
   padding: 15px 20px;
+  width: 84%;
   border: none;
   border-radius: 5px;
-  margin: 10px 0;
+  margin-bottom: 50px;
   background-color: #8c65d3;
   color: white;
   cursor: pointer;
@@ -147,12 +151,11 @@
   color: #333;
   cursor: pointer;
   font-size: 11px;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: opacity 0.3s ease;
 }
 
 .nextButton:hover {
-  background-color: black;
-  color: white;
+  opacity: 0.5;
 }
 
 .gameOver {
@@ -212,12 +215,17 @@
     font-size: 1.2rem;
   }
 
+  .introSubHeader {
+    font-size: 0.8rem;
+  }
+
   .introExplanation {
     padding: 20px;
   }
 
   .introExplanation p {
     font-size: 0.9rem;
+    padding: 10px;
     text-align: left;
   }
 
@@ -232,6 +240,7 @@
 
   .startButton {
     font-size: 11px;
+    margin-bottom: 40px;
   }
 
   .feedback h3 {

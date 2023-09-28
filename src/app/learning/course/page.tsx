@@ -15,6 +15,10 @@ export default function Course() {
           <FontAwesomeIcon icon={faBook} style={{ marginLeft: "13px" }} />
         </h1>
 
+        <p className={styles.courseSubHeader}>
+          Discover tailored Korean language courses at VocaVista!
+        </p>
+
         <CourseSort />
       </div>
     </>
