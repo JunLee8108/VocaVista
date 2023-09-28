@@ -105,12 +105,12 @@ export default function GameMain() {
           {showAnswer && (
             <div className={`${styles.feedback} mg-left-right-auto`}>
               {timer === 0 ? (
-                <h3>"Timed Out"</h3>
+                <h3 style={{ color: "#39ff14" }}>"Timed Out"</h3>
               ) : selectedAnswer ===
                 questions[currentQuestion].correctAnswer ? (
-                <h3>"Correct!"</h3>
+                <h3 style={{ color: "#4dfdff" }}>"Correct!"</h3>
               ) : (
-                <h3>"Wrong!"</h3>
+                <h3 style={{ color: "#ff1818" }}>"Wrong!"</h3>
               )}
               {timer !== 0 && (
                 <button onClick={nextQuestion} className={styles.nextButton}>
