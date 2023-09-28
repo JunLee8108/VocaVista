@@ -327,23 +327,24 @@
 .coursesContainer {
   width: 80%;
   max-width: 1920px;
-  flex-wrap: wrap;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(345px, 345px));
+  grid-gap: 3.5rem 4rem;
+  justify-content: center;
+  align-items: center;
+  place-items: center;
   padding: 2rem 0;
-  gap: 5rem;
+  padding-bottom: 60px;
   opacity: 0;
   transform: translateY(20px);
   animation: slideUp 1s 1.3s forwards;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 
 .courseCard {
-  flex-basis: calc(33% - 1rem); /* Responsive 3 cards layout */
-  /* width: 500px; */
-  flex: 20%;
-  /* width: 100%; */
-  max-width: 350px;
-  margin: 0.7rem;
+  width: 100%;
+  max-width: 345px;
+  margin: auto 0;
   padding: 1rem;
   background: #fff;
   border-radius: 10px;
@@ -526,8 +527,8 @@
 
   .coursesContainer {
     width: 100%;
-    gap: 1rem;
     margin-bottom: 0px;
+    grid-gap: 3rem 4rem;
   }
 
   .coursesHeading {
@@ -540,12 +541,11 @@
   .sectionTitle {
     font-size: 1.2rem;
     margin-top: 1.5rem;
-    margin-bottom: -15px;
+    margin-bottom: -5px;
   }
 
   .courseCard {
-    flex: none;
-    width: 85%;
+    width: 95%;
   }
 
   .courseCard h4 {
