@@ -90,6 +90,7 @@ const course = [
   {
     id: 0,
     img: course1,
+    difficulty: "beginner",
     title: "Beginner Korean *",
     content:
       "Start your journey with the basics of Korean grammar and vocabulary.",
@@ -97,12 +98,21 @@ const course = [
   {
     id: 1,
     img: course2,
+    difficulty: "intermediate",
     title: "Intermediate Korean Conversations *",
     content: "Dive into day-to-day dialogues and polish your speaking skills.",
   },
   {
     id: 2,
     img: course3,
+    difficulty: "advanced",
+    title: "Advanced Korean Writing *",
+    content: "Master the art of writing in Korean with comprehensive lessons.",
+  },
+  {
+    id: 2,
+    img: course3,
+    difficulty: "advanced",
     title: "Advanced Korean Writing *",
     content: "Master the art of writing in Korean with comprehensive lessons.",
   },
@@ -131,4 +141,6 @@ const pathStep = [
   },
 ];
 
-export { navbarList, feature, testimonial, course, pathStep };
+const sortBtn: string[] = ["All", "Beginner", "Intermediate", "Advanced"];
+
+export { navbarList, feature, testimonial, course, pathStep, sortBtn };

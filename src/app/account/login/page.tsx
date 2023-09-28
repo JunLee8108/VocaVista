@@ -8,19 +8,19 @@ import { faKey, faComment } from "@fortawesome/free-solid-svg-icons";
 export default async function Account() {
   return (
     <>
-      <div className="account-container">
+      <div className="account-container display-flex justify-content-center align-items-center">
         <div className="account-form">
-          <form>
-            <div className="account-form-flexbox">
+          <form className="display-flex">
+            <div className="account-form-flexbox display-flex justify-content-center align-items-center">
               <h1>
                 VocaVista <FontAwesomeIcon icon={faComment} />
               </h1>
             </div>
 
-            <div className="account-form-flexbox">
+            <div className="account-form-flexbox display-flex justify-content-center align-items-center">
               <h1>Login</h1>
 
-              <div className="account-input-container">
+              <div className="account-input-container display-flex justify-content-center">
                 <input
                   type="email"
                   required
@@ -30,7 +30,7 @@ export default async function Account() {
                 <label htmlFor="login-email">EMAIL</label>
               </div>
 
-              <div className="account-input-container">
+              <div className="account-input-container display-flex justify-content-center">
                 <input
                   type="email"
                   required

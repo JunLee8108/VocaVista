@@ -93,10 +93,10 @@ export default function Navbar() {
 
   return (
     <>
-      <nav>
-        <div className="navbar">
+      <nav className="display-flex justify-content-center">
+        <div className="navbar display-flex">
           {/* Navbar flexbox 1 */}
-          <div className="navbar-flexbox">
+          <div className="navbar-flexbox display-flex justify-content-center align-items-center">
             <h3>
               <Link
                 href="/"
@@ -114,7 +114,7 @@ export default function Navbar() {
           </div>
 
           {/* Navbar flexbox 2 */}
-          <div className="navbar-flexbox">
+          <div className="navbar-flexbox display-flex justify-content-center align-items-center">
             {navbarList.map((list, index) => {
               const navbarListLowerCase = list.menu
                 .replaceAll(" ", "-")

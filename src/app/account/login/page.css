@@ -1,7 +1,4 @@
 .account-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
   min-height: calc(100vh - 7rem);
 }
@@ -27,7 +24,6 @@
 .account-form form {
   width: 100%;
   height: 100%;
-  display: flex;
 }
 
 .account-form-flexbox {
@@ -37,10 +33,7 @@
 
 .account-form-flexbox:nth-child(1) {
   background-color: #8c65d3;
-  display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   border-radius: 5px 0 0 5px;
 }
 
@@ -50,10 +43,7 @@
 }
 
 .account-form-flexbox:nth-child(2) {
-  display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   border-radius: 0 5px 5px 0;
 }
 
@@ -83,8 +73,6 @@
 
 .account-input-container {
   width: 60%;
-  display: flex;
-  justify-content: center;
   position: relative;
 }
 

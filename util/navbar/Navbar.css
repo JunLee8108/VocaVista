@@ -1,22 +1,16 @@
 nav {
   background-color: #8c65d3;
-  display: flex;
-  justify-content: center;
 }
 
 .navbar {
   width: 100%;
   max-width: 2560px;
   height: 70px;
-  display: flex;
 }
 
 .navbar-flexbox {
   width: 50%;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .navbar-flexbox:nth-child(1) {
