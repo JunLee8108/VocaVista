@@ -76,6 +76,11 @@
   border: 2px solid #8c65d3;
 }
 
+.courseLink {
+  text-decoration: none;
+  color: #333;
+}
+
 .courseCard p {
   line-height: 25px;
 }

@@ -63,7 +63,7 @@ export default function FAQSection() {
           <button onClick={() => toggleAnswer(index)} className="question">
             <FontAwesomeIcon
               icon={faSquareCheck}
-              style={{ marginRight: "13px", color: "#8c65d3" }}
+              style={{ marginRight: "13px" }}
             />
             {faq.question}
           </button>

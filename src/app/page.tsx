@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./page.module.css";
 import { feature, testimonial, course, pathStep } from "../../util/data/data";
 
@@ -152,20 +153,25 @@ export default function Home() {
             return (
               <div key={index}>
                 {index < 3 ? (
-                  <div className={styles.courseCard}>
-                    <div className={styles.courseImageContainer}>
-                      <Image
-                        src={course[index].img}
-                        alt="Course 1"
-                        fill={true}
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        style={{ objectFit: "cover" }}
-                        priority={true}
-                      />
+                  <Link
+                    href={`/learning/course/${course[index].id}`}
+                    className={styles.homeCourseLink}
+                  >
+                    <div className={styles.courseCard}>
+                      <div className={styles.courseImageContainer}>
+                        <Image
+                          src={course[index].img}
+                          alt="Course 1"
+                          fill={true}
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          style={{ objectFit: "cover" }}
+                          priority={true}
+                        />
+                      </div>
+                      <h4>{course[index].title}</h4>
+                      <p>{course[index].content}</p>
                     </div>
-                    <h4>{course[index].title}</h4>
-                    <p>{course[index].content}</p>
-                  </div>
+                  </Link>
                 ) : null}
               </div>
             );

@@ -2,6 +2,7 @@
 
 import styles from "./page.module.css";
 import Image from "next/image";
+import Link from "next/link";
 import { MouseEvent, useEffect, useState } from "react";
 
 import { sortBtn } from "../../../../util/data/data";
@@ -73,20 +74,26 @@ export default function CourseSort() {
       <div className={`${styles.courseCardContainer}`}>
         {sortedData.map((content, index) => {
           return (
-            <div className={styles.courseCard} key={index}>
-              <div className={styles.courseImageContainer}>
-                <Image
-                  src={sortedData[index].img}
-                  alt="Course 1"
-                  fill={true}
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  style={{ objectFit: "cover" }}
-                  priority={true}
-                />
+            <Link
+              href={`/learning/course/${sortedData[index].id}`}
+              key={index}
+              className={styles.courseLink}
+            >
+              <div className={styles.courseCard}>
+                <div className={styles.courseImageContainer}>
+                  <Image
+                    src={sortedData[index].img}
+                    alt="Course 1"
+                    fill={true}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    style={{ objectFit: "cover" }}
+                    priority={true}
+                  />
+                </div>
+                <h4>{sortedData[index].title}</h4>
+                <p>{sortedData[index].content}</p>
               </div>
-              <h4>{sortedData[index].title}</h4>
-              <p>{sortedData[index].content}</p>
-            </div>
+            </Link>
           );
         })}
       </div>
