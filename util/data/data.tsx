@@ -96,49 +96,59 @@ const course = [
       "Start your journey with the basics of Korean grammar and vocabulary.",
     lesson: [
       {
+        id: 0,
         title: "Lesson 1: Introduction",
         description: "Get started with basic Korean alphabets and sounds.",
       },
       {
+        id: 1,
         title: "Lesson 2: Basic Phrases",
         description: "Learn common phrases used in daily conversations.",
       },
       {
+        id: 2,
         title: "Lesson 3: Numbers and Time",
         description:
           "Master counting in Korean, tell the time, and understand the two number systems to shop and schedule confidently.",
       },
       {
+        id: 3,
         title: "Lesson 4: Everyday Vocabulary",
         description:
           "Build your word bank with common nouns, verbs, and adjectives used in daily life to express yourself effectively.",
       },
       {
+        id: 4,
         title: "Lesson 5: Forming Simple Sentences",
         description:
           "Learn the structure of Korean sentences and practice forming your own basic statements and questions.",
       },
       {
+        id: 5,
         title: "Lesson 6: Korean Grammar Essentials",
         description:
           "Dive into the foundational grammar rules, including verb conjugation, particles, and sentence endings for different formality levels.",
       },
       {
+        id: 6,
         title: "Lesson 7: Listening Skills 101",
         description:
           "Tune your ears to the Korean language with listening exercises to understand spoken phrases and sentences.",
       },
       {
+        id: 7,
         title: "Lesson 8: Speaking Practice",
         description:
           "Engage in practical speaking exercises to pronounce words clearly and communicate basic ideas in Korean.",
       },
       {
+        id: 8,
         title: "Lesson 9: Cultural Insights",
         description:
           "Immerse in Korean culture, traditions, and societal norms to communicate respectfully and authentically.",
       },
       {
+        id: 9,
         title: "Lesson 10: Review and Practice",
         description:
           "Consolidate your learning with a comprehensive review and practice using interactive quizzes and dialogues.Each lesson is designed to be progressive and interactive, ensuring that beginners grasp the basics of the Korean language while engaging in practical exercises to reinforce their learning.",
@@ -155,51 +165,61 @@ const course = [
     content: "Dive into day-to-day dialogues and polish your speaking skills.",
     lesson: [
       {
+        id: 0,
         title: "Lesson 1: Expressing Emotions",
         description:
           "Enhance your conversational skills by learning varied expressions to convey emotions and feelings effectively in Korean.",
       },
       {
+        id: 1,
         title: "Lesson 2: Advanced Grammar Structures",
         description:
           "Delve into complex sentence constructions, enabling more sophisticated and nuanced communications.",
       },
       {
+        id: 2,
         title: "Lesson 3: Talking About the Future",
         description:
           "Master future tense and explore expressions to discuss plans, aspirations, and predictions.",
       },
       {
+        id: 3,
         title: "Lesson 4: Narrating Past Events",
         description:
           "Develop your storytelling abilities, narrating past experiences and events with clarity and detail.",
       },
       {
+        id: 4,
         title: "Lesson 5: Health and Wellness Conversations",
         description:
           "Learn vocabulary and phrases for discussing health, wellness, and medical scenarios with precision.",
       },
       {
+        id: 5,
         title: "Lesson 6: Workplace Communication",
         description:
           "Equip yourself with business terminology and etiquette to communicate professionally in a Korean workplace.",
       },
       {
+        id: 6,
         title: "Lesson 7: Navigating Social Situations",
         description:
           "Practice conversations for social events and informal settings, enhancing fluency and cultural understanding.",
       },
       {
+        id: 7,
         title: "Lesson 8: Korean Idioms and Slange",
         description:
           "Enrich your vocabulary with idiomatic expressions and slang, adding color and authenticity to your conversations.",
       },
       {
+        id: 8,
         title: "Lesson 9: Discussing News and Media",
         description:
           "Explore language used in media, improving your skills to discuss current events and trending topics.",
       },
       {
+        id: 9,
         title: "Lesson 10: Conversational Practice Sessions",
         description:
           "Consolidate your learning with a comprehensive review and practice using interactive quizzes and dialogues.Each lesson is designed to be progressive and interactive, ensuring that beginners grasp the basics of the Korean language while engaging in practical exercises to reinforce their learning.",
@@ -216,51 +236,61 @@ const course = [
     content: "Master the art of writing in Korean with comprehensive lessons.",
     lesson: [
       {
+        id: 0,
         title: "Lesson 1: Mastering Hangul Writing",
         description:
           "Perfect your Hangul script, focusing on advanced writing techniques and calligraphy styles for aesthetic and professional writing.",
       },
       {
+        id: 1,
         title: "Lesson 2: Complex Sentence Structures",
         description:
           "Dive deep into complex grammatical forms and expressions, enhancing the sophistication of your written Korean.",
       },
       {
+        id: 2,
         title: "Lesson 3: Formal and Informal Writing Styles",
         description:
           "Navigate the nuances of jondaenmal and banmal, understanding the contexts and etiquettes of formal and informal writings.",
       },
       {
+        id: 3,
         title: "Lesson 4: Creative Writing Elements",
         description:
           "Explore elements of storytelling, poetry, and essay writing, honing creativity and expression in Korean.",
       },
       {
+        id: 4,
         title: "Lesson 5: Korean Business Correspondence",
         description:
           "Learn the structure, tone, and style of academic writing, focusing on thesis, essays, and reports in Korean.",
       },
       {
+        id: 5,
         title: "Lesson 6: Academic Writing Skills",
         description:
           "Dive into the foundational grammar rules, including verb conjugation, particles, and sentence endings for different formality levels.",
       },
       {
+        id: 6,
         title: "Lesson 7: Editing and Proofreading Techniques",
         description:
           "Enhance your writing precision with skills in editing and proofreading, ensuring clarity and correctness.",
       },
       {
+        id: 7,
         title: "Lesson 8: Writing for Media",
         description:
           "Develop the aptitude to write articles, blogs, and scripts, adapting to different media and audience.",
       },
       {
+        id: 8,
         title: "Lesson 9: Cultural Sensitivity in Writing",
         description:
           "Immerse in the cultural aspects influencing written expressions, ensuring respect and appropriateness.",
       },
       {
+        id: 9,
         title: "Lesson 10: Portfolio Development",
         description:
           "Compile and refine your writings, creating a comprehensive portfolio showcasing your advanced Korean writing skills.",

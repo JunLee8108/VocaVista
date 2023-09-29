@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { course } from "../../../../../util/data/data";
 import "./page.css";
 
@@ -13,10 +14,16 @@ export default function CourseDetail({ params }: { params: { id: string } }) {
 
       <div className="lesson-container">
         {courseData[0].lesson.map((content, index) => (
-          <div key={index} className="lesson-card">
-            <h2>{content.title} *</h2>
-            <p>{content.description}</p>
-          </div>
+          <Link
+            href={`/learning/course/${courseData[0].id}/lesson/${content.id}`}
+            className="lesson-link"
+            key={index}
+          >
+            <div className="lesson-card">
+              <h2>{content.title} *</h2>
+              <p>{content.description}</p>
+            </div>
+          </Link>
         ))}
       </div>
     </div>
