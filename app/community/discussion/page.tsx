@@ -19,7 +19,6 @@ export default async function Community() {
       <p className={styles.communitySubHeader}>
         Discover tailored Korean language courses at VocaVista!
       </p>
-
       <input
         type="text"
         placeholder="🔍 Search Discussions..."
