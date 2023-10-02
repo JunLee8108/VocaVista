@@ -28,18 +28,20 @@ export default async function Community() {
 
       <ul className={styles.threadList}>
         {result.map((content, index) => {
+          const idToString = content._id.toString();
           return (
-            <li className={styles.threadItem} key={index}>
-              <Link
-                href={`/community/discussion/${content._id}`}
-                className={styles.communityLink}
-              >
+            <Link
+              href={`/community/discussion/${idToString}`}
+              className={styles.communityLink}
+              key={index}
+            >
+              <li className={styles.threadItem}>
                 <h2 className={styles.threadTitle}>{content.title}</h2>
                 <p className={styles.threadDetails}>
                   {`Posted by ${content.firstname} ${content.lastname}, 3 comments`}
                 </p>
-              </Link>
-            </li>
+              </li>
+            </Link>
           );
         })}
       </ul>
