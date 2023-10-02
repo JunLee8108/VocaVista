@@ -3,12 +3,19 @@ import Link from "next/link";
 import "./page.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faKey, faComment } from "@fortawesome/free-solid-svg-icons";
+import { faKey, faComment, faUser } from "@fortawesome/free-solid-svg-icons";
 
 export default async function Account() {
   return (
     <>
       <div className="account-container display-flex justify-content-center align-items-center">
+        <div className="account-introduction">
+          <h1 className="account-header">Login</h1>
+          <p className="account-subHeader">
+            It's great to have you back at VocaVista!
+          </p>
+        </div>
+
         <div className="account-form">
           <form className="display-flex">
             <div className="account-form-flexbox display-flex justify-content-center align-items-center">
@@ -18,7 +25,7 @@ export default async function Account() {
             </div>
 
             <div className="account-form-flexbox display-flex justify-content-center align-items-center">
-              <h1>Login</h1>
+              <FontAwesomeIcon icon={faUser} className="account-user-icon" />
 
               <div className="account-input-container display-flex justify-content-center">
                 <input
@@ -32,7 +39,7 @@ export default async function Account() {
 
               <div className="account-input-container display-flex justify-content-center">
                 <input
-                  type="email"
+                  type="password"
                   required
                   placeholder="Password*"
                   id="login-password"

@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./page.module.css";
-import { feature, testimonial, course, pathStep } from "../../util/data/data";
+import { feature, testimonial, course, pathStep } from "../util/data/data";
+import clientPromise from "../util/data/database";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -12,6 +13,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function Home() {
+  // const db = (await clientPromise).db("voca");
+  // const result = await db.collection("users").find().toArray();
+
+  // console.log(result);
+
   return (
     <>
       {/* Home Section */}

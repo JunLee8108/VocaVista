@@ -1,5 +1,5 @@
 import styles from "./page.module.css";
-import { questions } from "../../../../util/data/data";
+import { questions } from "../../../util/data/data";
 
 import { MouseEventHandler } from "react";
 

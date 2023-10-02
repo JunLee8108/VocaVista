@@ -5,8 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { MouseEvent, useEffect, useState } from "react";
 
-import { sortBtn } from "../../../../util/data/data";
-import { course } from "../../../../util/data/data";
+import { sortBtn } from "../../../util/data/data";
+import { course } from "../../../util/data/data";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSort } from "@fortawesome/free-solid-svg-icons";

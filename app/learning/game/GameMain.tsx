@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "./page.module.css";
-import { questions } from "../../../../util/data/data";
+import { questions } from "../../../util/data/data";
 import GameIntro from "./GameIntro";
 import GameOver from "./GameOver";
 

@@ -239,6 +239,15 @@ export default function Navbar() {
                     </div>
                   );
                 })}
+                <li>
+                  <Link
+                    href="/account/login"
+                    className="navbar-link"
+                    onClick={mobilePageTransition}
+                  >
+                    ACCOUNT
+                  </Link>
+                </li>
               </div>
             </div>
           ) : null}

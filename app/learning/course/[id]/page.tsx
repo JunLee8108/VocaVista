@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { course } from "../../../../../util/data/data";
+import { course } from "../../../../util/data/data";
 import "./page.css";
 
 export default function CourseDetail({ params }: { params: { id: string } }) {
