@@ -18,7 +18,7 @@ const navbarList = [
   {
     id: 2,
     menu: "COMMUNITY",
-    subMenu: ["Discussions"],
+    subMenu: ["Discussion"],
   },
   {
     id: 3,

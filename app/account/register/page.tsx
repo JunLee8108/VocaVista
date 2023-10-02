@@ -1,7 +1,7 @@
 "use client";
 
 import "./page.css";
-import Loading from "../../../util/helpers/Loading";
+import LoadingPage from "../../../util/helpers/LoadingPage";
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -197,7 +197,7 @@ export default function Register() {
         </div>
       </div>
 
-      {isLoading ? <Loading /> : null}
+      {isLoading ? <LoadingPage /> : null}
     </>
   );
 }

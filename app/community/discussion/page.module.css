@@ -37,6 +37,18 @@
   border: 1px solid #8c65d3;
 }
 
+.communityLink {
+  text-decoration: none;
+}
+
+.communityLink:link {
+  color: #3d3d3d;
+}
+
+.communityLink:visited {
+  color: #3d3d3d;
+}
+
 .threadList {
   list-style-type: none;
   padding: 0;
