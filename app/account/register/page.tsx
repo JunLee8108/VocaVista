@@ -1,8 +1,10 @@
 "use client";
 
 import "./page.css";
+import Loading from "../../../util/helpers/Loading";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Register() {
   const [email, setEmail] = useState("");
@@ -23,10 +25,12 @@ export default function Register() {
     setPasswordSame(b);
   };
 
+  const router = useRouter();
+
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    // setLoading(true);
+    setLoading(true);
 
     // Checking if the email and the confirm email are the same
     if (email !== confirmEmail && password === confirmPassword) {
@@ -74,9 +78,12 @@ export default function Register() {
     console.log(res);
 
     if (res.toString() === "User already exists!") {
+      setLoading(false);
       alert("User already exists!");
     } else if (res.toString() === "Success!") {
+      setLoading(false);
       alert("Success!");
+      router.push("/account/login");
     }
   }
 
@@ -189,6 +196,8 @@ export default function Register() {
           </form>
         </div>
       </div>
+
+      {isLoading ? <Loading /> : null}
     </>
   );
 }
