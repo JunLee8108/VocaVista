@@ -3,7 +3,7 @@
 import LoadingPage from "../../../../util/helpers/LoadingPage";
 
 import { useState } from "react";
-import styles from "./postWrite.module.css";
+import styles from "./PostWrite.module.css";
 import { useRouter } from "next/navigation";
 
 export default function PostWrite() {

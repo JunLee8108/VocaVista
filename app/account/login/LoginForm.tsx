@@ -37,14 +37,27 @@ export default function LoginForm() {
       responseString === "Password is incorrect!"
     ) {
       alert(responseString);
+    } else if (responseString === "Success!") {
+      try {
+        const validationResponse = await fetch("/api/validateToken", {
+          method: "GET",
+          credentials: "include",
+        });
+
+        if (validationResponse.ok) {
+          const userData = await validationResponse.json();
+          console.log(userData); // Log the user data or set it to state
+        } else {
+          console.error("Failed to validate token");
+        }
+      } catch (error) {
+        console.error("Error during token validation:", error);
+      }
     }
 
     setLoading(false);
     setEmail("");
     setPassword("");
-
-    // // Debugging
-    // console.log(res);
   };
 
   return (
