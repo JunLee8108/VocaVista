@@ -7,7 +7,7 @@ import { faComments } from "@fortawesome/free-solid-svg-icons";
 
 async function getCommentData() {
   // https://voca-vista.vercel.app/
-  const res = await fetch("http://localhost:3000/api/comment", {
+  const res = await fetch("https://voca-vista.vercel.app//api/comment", {
     method: "GET",
     cache: "no-store",
   });
@@ -17,7 +17,7 @@ async function getCommentData() {
 
 async function getDiscussionData() {
   // https://voca-vista.vercel.app/
-  const res = await fetch("http://localhost:3000/api/discussion", {
+  const res = await fetch("https://voca-vista.vercel.app/api/discussion", {
     method: "GET",
     cache: "no-store",
   });
