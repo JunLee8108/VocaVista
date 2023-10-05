@@ -138,7 +138,7 @@ export default function Home() {
       </div>
 
       {/* Courser Section */}
-      <div className={styles.coursesContainerBg}>
+      <div className={styles.courseContainerBg}>
         <div
           className={`${styles.coursesHeading} display-flex justify-content-center`}
         >

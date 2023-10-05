@@ -1,7 +1,8 @@
 footer {
   width: 100%;
-  height: 7rem;
-  background-color: #8c65d3;
+  height: 17rem;
+  background-color: #9571d9;
+  /* background-color: #8c65d3; */
 }
 
 .footer-container {
@@ -11,57 +12,102 @@ footer {
   margin-left: auto;
   margin-right: auto;
   display: flex;
+  flex-direction: column;
 }
 
 .footer-flexbox {
-  width: 50%;
+  width: 100%;
   height: 100%;
   color: white;
   display: flex;
 }
 
 .footer-flexbox:nth-child(1) {
-  flex-direction: column;
+  padding-right: 25px;
   justify-content: center;
-  align-items: flex-start;
-  padding-left: 15px;
+  align-items: center;
+  gap: 15%;
+  width: 90%;
+  padding-bottom: 35px;
+  border-bottom: 1px dotted white;
 }
 
-.footer-flexbox:nth-child(1) h3 {
-  padding-bottom: 10px;
-  border-bottom: 2px solid white;
-  margin-bottom: 15px;
+.footer-menu {
+  list-style: none;
+  font-size: 0.7vw;
+  font-weight: bold;
+  letter-spacing: 1px;
+  height: 3rem;
 }
 
-.footer-flexbox:nth-child(1) p {
-  margin-top: 0;
-  font-size: 9px;
+.footer-submenu-container {
+  width: 100%;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  gap: 20px;
+}
+
+.footer-submenu {
+  font-weight: lighter;
+  list-style: none;
+  font-size: 0.6vw;
+}
+
+.footer-link {
+  text-decoration: none;
+  color: white;
+  transition: 0.3s color;
+}
+
+.footer-link:hover {
+  color: orange;
 }
 
 .footer-flexbox:nth-child(2) {
-  padding-right: 25px;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
-  gap: 3.5rem;
+  padding-left: 15px;
+  width: 90%;
 }
 
-.footer-flexbox:nth-child(2) li {
-  list-style: none;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 1px;
+.footer-flexbox:nth-child(2) h3 {
+  padding-bottom: 5px;
+  font-size: 1.2vw;
+  /* border-bottom: 2px solid white; */
+  /* margin-bottom: 15px; */
+}
+
+.footer-flexbox:nth-child(2) p {
+  font-size: 0.5vw;
+  margin-left: 10px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1280px) {
+  .footer-container {
+    max-width: 800px;
+  }
+
+  .footer-flexbox:nth-child(1) {
+    gap: 5rem;
+  }
 }
 
 @media screen and (max-width: 767px) {
-  .footer-flexbox:nth-child(1) h3 {
+  footer {
+    height: 6rem;
+  }
+
+  .footer-flexbox:nth-child(2) h3 {
     font-size: 15px;
   }
 
-  .footer-flexbox:nth-child(1) p {
+  .footer-flexbox:nth-child(2) p {
     font-size: 8px;
   }
 
-  .footer-flexbox:nth-child(2) {
+  .footer-flexbox:nth-child(1) {
     display: none;
   }
 }

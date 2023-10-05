@@ -1,4 +1,5 @@
 import styles from "./page.module.css";
+import SearchDiscussion from "./SearchDiscussion";
 import Link from "next/link";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,7 +8,7 @@ import { faComments } from "@fortawesome/free-solid-svg-icons";
 async function getCommentData() {
   // https://voca-vista.vercel.app/
   // http://localhost:3000
-  const res = await fetch("https://voca-vista.vercel.app/api/comment", {
+  const res = await fetch("http://localhost:3000/api/comment", {
     method: "GET",
     cache: "no-store",
   });
@@ -18,7 +19,7 @@ async function getCommentData() {
 async function getDiscussionData() {
   // https://voca-vista.vercel.app/
   // http://localhost:3000
-  const res = await fetch("https://voca-vista.vercel.app/api/discussion", {
+  const res = await fetch("http://localhost:3000/api/discussion", {
     method: "GET",
     cache: "no-store",
   });
@@ -40,11 +41,8 @@ export default async function Community() {
       <p className={styles.communitySubHeader}>
         Discover tailored Korean language courses at VocaVista!
       </p>
-      <input
-        type="text"
-        placeholder="🔍 Search Discussions..."
-        className={styles.searchBar}
-      />
+
+      <SearchDiscussion result={result} commentData={commentData} />
 
       <ul className={styles.threadList}>
         {result.map((content: any, index: number) => {

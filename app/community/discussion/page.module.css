@@ -37,6 +37,27 @@
   border: 1px solid #8c65d3;
 }
 
+.searchModalBg {
+  position: fixed;
+  max-width: none;
+  width: 100%;
+  max-width: none;
+  top: 250px;
+  left: 0;
+  background-color: white;
+  border: 2px dotted #8c65d3;
+  border-radius: 5px;
+  z-index: 10;
+}
+
+.searchModalContainer {
+  z-index: 15;
+}
+
+.searchModalNoResult {
+  text-align: center;
+}
+
 .communityLink {
   text-decoration: none;
 }
@@ -124,6 +145,11 @@
   .communitySubHeader {
     font-size: 0.8rem;
     margin-bottom: 2rem;
+  }
+
+  .searchModalBg {
+    width: 90%;
+    left: 20px;
   }
 
   .threadTitle {

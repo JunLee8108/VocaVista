@@ -54,7 +54,7 @@ nav {
   color: white;
   padding: 23px 0 23px 0;
   /* border-bottom: 4px solid transparent; */
-  transition: 0.3s color, 0.3s border-bottom;
+  transition: 0.3s color;
 }
 
 .navbar-link:hover {
