@@ -1,5 +1,4 @@
 import styles from "./page.module.css";
-import clientPromise from "../../../util/data/database";
 import Link from "next/link";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,7 +6,8 @@ import { faComments } from "@fortawesome/free-solid-svg-icons";
 
 async function getCommentData() {
   // https://voca-vista.vercel.app/
-  const res = await fetch("https://voca-vista.vercel.app//api/comment", {
+  // http://localhost:3000
+  const res = await fetch("https://voca-vista.vercel.app/api/comment", {
     method: "GET",
     cache: "no-store",
   });
@@ -17,6 +17,7 @@ async function getCommentData() {
 
 async function getDiscussionData() {
   // https://voca-vista.vercel.app/
+  // http://localhost:3000
   const res = await fetch("https://voca-vista.vercel.app/api/discussion", {
     method: "GET",
     cache: "no-store",
@@ -26,10 +27,6 @@ async function getDiscussionData() {
 }
 
 export default async function Community() {
-  const db = (await clientPromise).db("voca");
-  // const result = await db.collection("discussions").find().toArray();
-  // const commentData = await db.collection("comments").find().toArray();
-
   const commentData = await getCommentData();
   const result = await getDiscussionData();
 
