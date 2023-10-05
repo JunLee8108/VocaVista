@@ -8,6 +8,7 @@ import { faComments } from "@fortawesome/free-solid-svg-icons";
 export default async function Community() {
   const db = (await clientPromise).db("voca");
   const result = await db.collection("discussions").find().toArray();
+  const commentData = await db.collection("comments").find().toArray();
 
   return (
     <div className={styles.container}>
@@ -28,6 +29,10 @@ export default async function Community() {
       <ul className={styles.threadList}>
         {result.map((content, index) => {
           const idToString = content._id.toString();
+          const filteredCommentData = commentData.filter(
+            (data) => data.parent.toString() === content._id.toString()
+          );
+
           return (
             <Link
               href={`/community/discussion/${idToString}`}
@@ -35,9 +40,10 @@ export default async function Community() {
               key={index}
             >
               <li className={styles.threadItem}>
+                <p className={styles.communityPostDate}>{content.createdAt}</p>
                 <h2 className={styles.threadTitle}>{content.title}</h2>
                 <p className={styles.threadDetails}>
-                  {`Posted by ${content.firstname} ${content.lastname}, 3 comments`}
+                  {`Posted by ${content.firstname} ${content.lastname}, ${filteredCommentData.length} comments`}
                 </p>
               </li>
             </Link>
@@ -45,7 +51,12 @@ export default async function Community() {
         })}
       </ul>
 
-      <button className={styles.newThreadBtn}>NEW DISCUSSION</button>
+      <Link
+        href="/community/discussion/write"
+        className={styles.communityNewPost}
+      >
+        <button className={styles.newThreadBtn}>NEW DISCUSSION</button>
+      </Link>
     </div>
   );
 }

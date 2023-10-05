@@ -1,5 +1,4 @@
 import clientPromise from "../../util/data/database";
-import { ObjectId } from "mongodb";
 
 export default async function handler(req, res) {
   try {
@@ -11,25 +10,27 @@ export default async function handler(req, res) {
         return res.status(400).json("empty");
       }
 
-      const commentInfo = {
-        content: data.content,
+      const discussionInfo = {
+        title: data.title,
         firstname: data.firstname,
         lastname: data.lastname,
-        email: data.email,
-        parent: new ObjectId(data.parent),
+        content: data.content,
         createdAt: data.createdAt,
       };
 
-      const insertCommentInfo = await db
-        .collection("comments")
-        .insertOne(commentInfo);
+      const result = await db
+        .collection("discussions")
+        .insertOne(discussionInfo);
 
       res.status(200).json("Success!");
     } else if (req.method === "GET") {
       const db = (await clientPromise).db("voca");
-      const commentData = await db.collection("comments").find().toArray();
+      const discussionData = await db
+        .collection("discussions")
+        .find()
+        .toArray();
 
-      res.status(200).json(commentData);
+      res.status(200).json(discussionData);
     }
   } catch (error) {
     res.status(500).json("error");

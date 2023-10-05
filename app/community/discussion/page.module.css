@@ -49,6 +49,11 @@
   color: #3d3d3d;
 }
 
+.communityNewPost {
+  text-decoration: none;
+  color: white;
+}
+
 .threadList {
   list-style-type: none;
   padding: 0;
@@ -67,6 +72,11 @@
 
 .threadItem:hover {
   border: 2px solid #8c65d3;
+}
+
+.communityPostDate {
+  color: gray;
+  font-size: 13px;
 }
 
 .threadTitle {
@@ -117,7 +127,11 @@
   }
 
   .threadTitle {
-    font-size: 1rem;
+    font-size: 1.2rem;
+  }
+
+  .communityPostDate {
+    font-size: 12px;
   }
 
   .threadDetails {

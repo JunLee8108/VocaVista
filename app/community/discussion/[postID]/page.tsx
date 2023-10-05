@@ -2,6 +2,8 @@ import "./page.css";
 import CommentForm from "./CommentForm";
 import clientPromise from "../../../../util/data/database";
 import { ObjectId } from "mongodb";
+import React from "react";
+import { Fragment } from "react";
 
 export default async function PostDetail({ params }: { params: any }) {
   const db = (await clientPromise).db("voca");
@@ -21,6 +23,7 @@ export default async function PostDetail({ params }: { params: any }) {
       {result && (
         <div className="post-detail-bg">
           <div className="post-detail-container">
+            <p className="post-detail-date">{result.createdAt}</p>
             <h1 className="post-detail-header">{result.title}</h1>
             <p className="post-detail-content">{result.content}</p>
 
@@ -28,9 +31,12 @@ export default async function PostDetail({ params }: { params: any }) {
               <p className="comments-header">Comments:</p>
               {commentData.map((contentForcomment: any, index: any) => {
                 return (
-                  <p className="comments" key={index}>
-                    {contentForcomment.content}
-                  </p>
+                  <React.Fragment key={index}>
+                    <p className="comments-date">
+                      {contentForcomment.createdAt}
+                    </p>
+                    <p className="comments">{contentForcomment.content}</p>
+                  </React.Fragment>
                 );
               })}
             </div>
