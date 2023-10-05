@@ -5,10 +5,33 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComments } from "@fortawesome/free-solid-svg-icons";
 
+async function getCommentData() {
+  // https://voca-vista.vercel.app/
+  const res = await fetch("http://localhost:3000/api/comment", {
+    method: "GET",
+    cache: "no-store",
+  });
+
+  return res.json();
+}
+
+async function getDiscussionData() {
+  // https://voca-vista.vercel.app/
+  const res = await fetch("http://localhost:3000/api/discussion", {
+    method: "GET",
+    cache: "no-store",
+  });
+
+  return res.json();
+}
+
 export default async function Community() {
   const db = (await clientPromise).db("voca");
-  const result = await db.collection("discussions").find().toArray();
-  const commentData = await db.collection("comments").find().toArray();
+  // const result = await db.collection("discussions").find().toArray();
+  // const commentData = await db.collection("comments").find().toArray();
+
+  const commentData = await getCommentData();
+  const result = await getDiscussionData();
 
   return (
     <div className={styles.container}>
@@ -27,10 +50,10 @@ export default async function Community() {
       />
 
       <ul className={styles.threadList}>
-        {result.map((content, index) => {
+        {result.map((content: any, index: number) => {
           const idToString = content._id.toString();
           const filteredCommentData = commentData.filter(
-            (data) => data.parent.toString() === content._id.toString()
+            (data: any) => data.parent.toString() === content._id.toString()
           );
 
           return (
