@@ -32,17 +32,19 @@ export default async function Community() {
   const result = await getDiscussionData();
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.header}>
-        Community Discussions{" "}
-        <FontAwesomeIcon icon={faComments} style={{ marginLeft: "5px" }} />
-      </h1>
+    <>
+      <div className={styles.container}>
+        <h1 className={styles.header}>
+          Community Discussions{" "}
+          <FontAwesomeIcon icon={faComments} style={{ marginLeft: "5px" }} />
+        </h1>
 
-      <p className={styles.communitySubHeader}>
-        Discover tailored Korean language courses at VocaVista!
-      </p>
+        <p className={styles.communitySubHeader}>
+          Discover tailored Korean language courses at VocaVista!
+        </p>
 
-      <SearchDiscussion result={result} commentData={commentData} />
-    </div>
+        <SearchDiscussion result={result} commentData={commentData} />
+      </div>
+    </>
   );
 }
