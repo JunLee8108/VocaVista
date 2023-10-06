@@ -62,6 +62,10 @@ nav {
   /* border-bottom: 4px solid orange; */
 }
 
+.navbar-link:focus {
+  color: orange;
+}
+
 .navbar-account-icon {
   width: 25px;
 }

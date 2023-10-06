@@ -21,7 +21,6 @@ type sortData = {
 
 export default function CourseSort() {
   const [sortedData, setSortedData] = useState<sortData[]>([]);
-  const [fade, setFade] = useState("");
 
   const handleSortBtn = (e: MouseEvent<HTMLElement>) => {
     const sortBtnSelectAll = document.querySelectorAll<HTMLElement>(

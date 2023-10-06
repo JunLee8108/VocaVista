@@ -46,6 +46,10 @@ export default function Navbar() {
     }, 200);
   };
 
+  const removeSessionStorage = () => {
+    sessionStorage.removeItem("itemsToShow");
+  };
+
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout>;
 
@@ -105,6 +109,7 @@ export default function Navbar() {
                   if (window.innerWidth <= 768) {
                     mobilePageTransition();
                   }
+                  removeSessionStorage();
                 }}
               >
                 VocaVista
@@ -124,7 +129,11 @@ export default function Navbar() {
                 <div key={index}>
                   {navbarList[index].menu === "HOME" ? (
                     <li>
-                      <Link href="/" className="navbar-link">
+                      <Link
+                        href="/"
+                        className="navbar-link"
+                        onClick={removeSessionStorage}
+                      >
                         {navbarList[index].menu}
                       </Link>
                     </li>
@@ -135,6 +144,9 @@ export default function Navbar() {
                           .replaceAll(" ", "-")
                           .toLocaleLowerCase()}`}
                         className="navbar-link"
+                        onClick={() => {
+                          removeSessionStorage();
+                        }}
                       >
                         {navbarList[index].menu}
                       </Link>
@@ -149,6 +161,7 @@ export default function Navbar() {
                               <Link
                                 href={`/${navbarListLowerCase}/${subMenuListLowerCase}`}
                                 className="navbar-link"
+                                onClick={removeSessionStorage}
                               >
                                 {content}
                               </Link>
@@ -163,7 +176,11 @@ export default function Navbar() {
             })}
 
             <li>
-              <Link href="/account/login" className="navbar-link">
+              <Link
+                href="/account/login"
+                className="navbar-link"
+                onClick={removeSessionStorage}
+              >
                 <FontAwesomeIcon
                   icon={faUser}
                   size="lg"
@@ -222,7 +239,10 @@ export default function Navbar() {
                           <Link
                             href="/"
                             className="navbar-link-mobile"
-                            onClick={mobilePageTransition}
+                            onClick={() => {
+                              mobilePageTransition();
+                              removeSessionStorage();
+                            }}
                           >
                             {navbarList[index].menu}
                           </Link>
@@ -243,7 +263,10 @@ export default function Navbar() {
                   <Link
                     href="/account/login"
                     className="navbar-link"
-                    onClick={mobilePageTransition}
+                    onClick={() => {
+                      mobilePageTransition();
+                      removeSessionStorage();
+                    }}
                   >
                     ACCOUNT
                   </Link>
@@ -277,7 +300,10 @@ export default function Navbar() {
                       <Link
                         href={`/${mobileMenuName}/${navbarListLowerCase}`}
                         className="navbar-link-mobile"
-                        onClick={mobilePageTransition}
+                        onClick={() => {
+                          mobilePageTransition();
+                          removeSessionStorage();
+                        }}
                       >
                         {list.toLocaleUpperCase()}
                       </Link>
