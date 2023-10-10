@@ -3,7 +3,6 @@ import Navbar from "../util/navbar/Navbar";
 import Footer from "../util/footer/Footer";
 import type { Metadata } from "next";
 import { Ubuntu } from "next/font/google";
-import { Suspense } from "react";
 
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
@@ -19,6 +18,8 @@ const ubuntu = Ubuntu({
 export const metadata: Metadata = {
   title: "VocaVista",
   description: "E-Learning Platform",
+  viewport:
+    "initial-scale=1.0, user-scalable=no, maximum-scale=1, width=device-width",
 };
 
 export default function RootLayout({

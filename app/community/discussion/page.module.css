@@ -198,4 +198,8 @@
   .threadDetails {
     font-size: 0.9rem;
   }
+
+  .newThreadBtn {
+    font-size: 12px;
+  }
 }
