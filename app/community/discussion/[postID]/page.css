@@ -25,6 +25,22 @@
   font-size: 13.5px;
 }
 
+.post-detail-delete {
+  color: red;
+  border: none;
+  background-color: transparent;
+  padding: 10px;
+  /* box-shadow: 10px 10px 20px rgba(204, 30, 30, 0.2); */
+  box-shadow: 10px 10px 20px rgba(206, 190, 190, 0.2);
+  cursor: pointer;
+  transition: 0.3s ease background-color;
+  border-radius: 5px;
+}
+
+.post-detail-delete:hover {
+  background-color: black;
+}
+
 .commentsSection {
   border-top: 1px solid #ddd;
   margin-top: 40px;
@@ -45,6 +61,83 @@
 .comments {
   margin-top: 5px;
   font-size: 15px;
+  display: inline-block;
+}
+
+.comments-delete {
+  margin-bottom: 5px;
+  padding: 10px;
+  font-size: 17px;
+  border: none;
+  background-color: transparent;
+  color: #8c65d3;
+  cursor: pointer;
+  transition: 0.3s ease color;
+}
+
+.comments-delete:hover {
+  color: red;
+}
+
+.delete-comment-modal-bg {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.delete-comment-modal-container {
+  width: 90%;
+  max-width: 400px;
+  height: 400px;
+  z-index: 15;
+  padding: 50px;
+  background-color: white;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideUp 0.7s 0.2s forwards;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  line-height: 30px;
+  border-radius: 5px;
+}
+
+.delete-comment-modal-container h3 {
+  text-align: center;
+}
+
+.delete-comment-button-container {
+  width: 60%;
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.delete-comment-button-container button {
+  padding: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 12px;
+  border: none;
+  border-bottom: 1px dotted #131313;
+  background-color: transparent;
+  transition: 0.3s all ease;
+  cursor: pointer;
+}
+
+.delete-comment-button-container button:hover {
+  background-color: #8c65d3;
+  color: white;
+  border-radius: 5px;
+  border-bottom: 1px dotted transparent;
 }
 
 .commentForm {
@@ -98,6 +191,13 @@
   animation: fadeIn 0.6s ease-in-out;
 }
 
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .post-detail-bg {
@@ -116,7 +216,23 @@
     font-size: 12px;
   }
 
+  .post-detail-delete {
+    font-size: 10px;
+  }
+
   .post-detail-content {
     font-size: 15px;
+  }
+
+  .comments-delete {
+    font-size: 15px;
+  }
+
+  .delete-comment-modal-container h3 {
+    font-size: 17px;
+  }
+
+  .delete-comment-button-container button {
+    font-size: 10px;
   }
 }
