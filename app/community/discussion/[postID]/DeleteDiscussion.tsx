@@ -39,7 +39,7 @@ export default function DeleteDiscussion({ result }: { result: string }) {
       if (res.toString() === "Success!") {
         setLoading(false);
         router.refresh();
-        router.push("/community/discussion");
+        router.replace("/community/discussion");
       } else {
         alert("Failed to delete the discussion.");
       }

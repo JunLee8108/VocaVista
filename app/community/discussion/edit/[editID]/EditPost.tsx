@@ -59,7 +59,7 @@ export default function EditPost({
 
     if (res.toString() === "Success!") {
       router.refresh();
-      router.push(`/community/discussion/${propsResult._id}`);
+      router.replace(`/community/discussion/${propsResult._id}`);
     } else {
       setLoading(false);
       alert("Failed to edit the post");
