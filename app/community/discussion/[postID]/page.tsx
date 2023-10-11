@@ -6,6 +6,7 @@ import DeleteDiscussion from "./DeleteDiscussion";
 
 import { ObjectId } from "mongodb";
 import React from "react";
+import Link from "next/link";
 
 export default async function PostDetail({ params }: { params: any }) {
   const db = (await clientPromise).db("voca");
@@ -25,7 +26,16 @@ export default async function PostDetail({ params }: { params: any }) {
       {result && (
         <div className="post-detail-bg">
           <div className="post-detail-container">
-            <DeleteDiscussion result={result._id.toString()} />
+            <div className="post-detail-delete-edit-container">
+              <Link
+                href={`/community/discussion/edit/${result._id.toString()}`}
+              >
+                <button className="post-detail-edit">EDIT</button>
+              </Link>
+
+              <DeleteDiscussion result={result._id.toString()} />
+            </div>
+
             <p className="post-detail-date">{result.createdAt}</p>
             <h1 className="post-detail-header">{result.title}</h1>
             <p className="post-detail-content">{result.content}</p>

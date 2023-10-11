@@ -5,15 +5,17 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 
 interface discussionProps {
-  id: string;
+  _id: string;
+  title: string;
   firstname: string;
   lastname: string;
   content: string;
   createdAt: string;
+  updatedAt: string;
 }
 
 interface commentProps {
-  id: string;
+  _id: string;
   content: string;
   firstname: string;
   lastname: string;

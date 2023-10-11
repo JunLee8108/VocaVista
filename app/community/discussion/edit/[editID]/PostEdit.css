@@ -1,0 +1,97 @@
+.post-edit-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  min-height: calc(100vh - 7rem);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideUp 0.7s 0.2s forwards;
+}
+
+.post-edit-input {
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  outline: none;
+  transition: border 0.3s;
+}
+
+.post-edit-input:focus {
+  border: 1px solid #8c65d3;
+}
+
+.post-edit-textarea {
+  width: 100%;
+  height: 400px;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.3s;
+  resize: none;
+}
+
+.post-edit-textarea:focus {
+  border: 1px solid #8c65d3;
+}
+
+.post-edit-button {
+  padding: 1rem 2rem;
+  background-color: #8c65d3;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: opacity 0.3s;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.post-edit-button:hover {
+  opacity: 0.9;
+}
+
+.post-edit-button:disabled {
+  background-color: #e0e0e0;
+  cursor: not-allowed;
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.post-edit-loading-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+}
+
+.post-edit-loader {
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #8c65d3;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  animation: spin 1.5s linear infinite;
+  margin: auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

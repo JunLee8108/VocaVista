@@ -18,6 +18,7 @@ export default async function handler(req, res) {
         lastname: data.lastname,
         content: data.content,
         createdAt: data.createdAt,
+        updatedAt: data.updatedAt,
       };
 
       const result = await db
@@ -51,6 +52,37 @@ export default async function handler(req, res) {
         res.status(200).json("Success!");
       } catch (error) {
         return res.status(400).json("Error!");
+      }
+    }
+    // PUT
+    else if (req.method === "PUT") {
+      const data = JSON.parse(req.body);
+      try {
+        const db = (await clientPromise).db("voca");
+
+        if (data.content === "" || data.title === "") {
+          return res.status(400).json("empty");
+        }
+
+        const updatedDiscussionInfo = {
+          title: data.title,
+          firstname: data.firstname,
+          lastname: data.lastname,
+          content: data.content,
+          createdAt: data.createdAt,
+          updatedAt: data.updatedAt,
+        };
+
+        const update = await db
+          .collection("discussions")
+          .updateOne(
+            { _id: new ObjectId(data._id) },
+            { $set: updatedDiscussionInfo }
+          );
+
+        res.status(200).json("Success!");
+      } catch (error) {
+        return res.status(400).json("error");
       }
     }
   } catch (error) {

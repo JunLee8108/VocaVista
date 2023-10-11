@@ -13,11 +13,33 @@
   position: relative;
 }
 
+.post-detail-delete-edit-container {
+  display: flex;
+  justify-content: space-between;
+}
+
 .post-detail-header {
   color: #333;
   border-bottom: 1px solid #ddd;
   padding-bottom: 10px;
   margin-bottom: 20px;
+}
+
+.post-detail-edit {
+  color: #131313;
+  border: none;
+  background-color: transparent;
+  padding: 10px;
+  /* box-shadow: 10px 10px 20px rgba(204, 30, 30, 0.2); */
+  box-shadow: 10px 10px 20px rgba(206, 190, 190, 0.2);
+  cursor: pointer;
+  transition: 0.3s ease all;
+  border-radius: 5px;
+}
+
+.post-detail-edit:hover {
+  background-color: black;
+  color: white;
 }
 
 .post-detail-date {
@@ -67,10 +89,11 @@
 .comments-delete {
   margin-bottom: 5px;
   padding: 10px;
-  font-size: 17px;
+  font-size: 12px;
   border: none;
   background-color: transparent;
-  color: #8c65d3;
+  /* color: #8c65d3; */
+  color: #131313;
   cursor: pointer;
   transition: 0.3s ease color;
 }
@@ -214,6 +237,10 @@
 
   .post-detail-date {
     font-size: 12px;
+  }
+
+  .post-detail-edit {
+    font-size: 10px;
   }
 
   .post-detail-delete {

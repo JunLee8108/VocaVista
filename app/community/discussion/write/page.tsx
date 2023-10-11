@@ -35,6 +35,7 @@ export default function PostWrite() {
         lastname: "",
         content: content,
         createdAt: date,
+        updatedAt: "",
       };
 
       let res = await fetch("/api/discussion", {
@@ -44,12 +45,11 @@ export default function PostWrite() {
 
       res = await res.json();
 
-      // Debugging
-      console.log(res);
+      // // Debugging
+      // console.log(res);
 
       if (res.toString() === "Success!") {
         setLoading(false);
-        alert("Success!");
         router.refresh();
         router.push("/community/discussion");
       } else {
