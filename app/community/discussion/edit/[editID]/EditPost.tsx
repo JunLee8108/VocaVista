@@ -64,8 +64,6 @@ export default function EditPost({
       setLoading(false);
       alert("Failed to edit the post");
     }
-
-    console.log(res.toString());
   };
 
   useEffect(() => {

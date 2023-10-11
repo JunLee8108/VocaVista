@@ -63,10 +63,13 @@ export default function SearchDiscussion({
       const filteredDataConst = result.filter(
         (data: any) =>
           data.content
-            .replace(" ", "")
+            .replaceAll(" ", "")
             .toLocaleLowerCase()
-            .includes(searchInput) ||
-          data.title.replace(" ", "").toLocaleLowerCase().includes(searchInput)
+            .includes(searchInput.replaceAll(" ", "").toLocaleLowerCase()) ||
+          data.title
+            .replaceAll(" ", "")
+            .toLocaleLowerCase()
+            .includes(searchInput.replaceAll(" ", "").toLocaleLowerCase())
       );
       setFilteredData(filteredDataConst);
       setIsInputEmpty(false);
@@ -86,7 +89,7 @@ export default function SearchDiscussion({
   }, [searchInput]);
 
   useEffect(() => {
-    if (itemsToShow > 3 && itemsToShow <= result.length) {
+    if (itemsToShow > 3) {
       sessionStorage.setItem("itemsToShow", JSON.stringify(itemsToShow));
     }
   }, [itemsToShow]);
@@ -174,7 +177,13 @@ export default function SearchDiscussion({
               key={index}
             >
               <li className={styles.threadItem}>
-                <p className={styles.communityPostDate}>{content.createdAt}</p>
+                <p className={styles.communityPostDate}>
+                  {content.updatedAt === "" ? (
+                    <>{content.createdAt}</>
+                  ) : (
+                    <>{content.updatedAt} Edited</>
+                  )}
+                </p>
                 <h2 className={styles.threadTitle}>{content.title}</h2>
                 <p className={styles.threadDetails}>
                   {`Posted by ${content.firstname} ${content.lastname}, ${filteredCommentData.length} comments`}

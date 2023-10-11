@@ -36,7 +36,13 @@ export default async function PostDetail({ params }: { params: any }) {
               <DeleteDiscussion result={result._id.toString()} />
             </div>
 
-            <p className="post-detail-date">{result.createdAt}</p>
+            <p className="post-detail-date">
+              {result.updatedAt === "" ? (
+                <>{result.createdAt}</>
+              ) : (
+                <>{result.updatedAt} Edited</>
+              )}
+            </p>
             <h1 className="post-detail-header">{result.title}</h1>
             <p className="post-detail-content">{result.content}</p>
 
