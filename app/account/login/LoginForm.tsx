@@ -4,15 +4,19 @@ import "./page.css";
 import LoadingPage from "../../../util/helpers/LoadingPage";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment, faUser, faKey } from "@fortawesome/free-solid-svg-icons";
+import { setCookie } from "cookies-next";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setLoading] = useState(false);
+
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     setLoading(true);
@@ -46,7 +50,10 @@ export default function LoginForm() {
 
         if (validationResponse.ok) {
           const userData = await validationResponse.json();
-          console.log(userData); // Log the user data or set it to state
+          router.refresh();
+          router.replace("/");
+
+          // console.log(userData); // Log the user data or set it to state
         } else {
           console.error("Failed to validate token");
         }

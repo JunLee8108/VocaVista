@@ -33,7 +33,9 @@ export default function SearchDiscussion({
 }) {
   const [searchInput, setSearchInput] = useState("");
   const [isInputEmpty, setIsInputEmpty] = useState(true);
+  const [isLoading, setLoading] = useState(false);
   const [itemsToShow, setItemsToShow] = useState(3);
+  const [discussionCount, setDiscussionCount] = useState(0);
   const [filteredData, setFilteredData] = useState<discussionProps[]>([]);
 
   const handleScroll = () => {
@@ -45,8 +47,12 @@ export default function SearchDiscussion({
       Math.ceil(window.innerHeight + window.scrollY) >=
       document.body.offsetHeight - 5;
 
-    if (bottom && itemsToShow <= result.length) {
-      setItemsToShow(itemsToShow + 3);
+    if (bottom && itemsToShow < result.length) {
+      // setLoading(true);
+      const timer = setTimeout(() => {
+        // setLoading(false);
+        setItemsToShow(itemsToShow + 3);
+      }, 500);
     }
   };
 
@@ -73,7 +79,7 @@ export default function SearchDiscussion({
       );
       setFilteredData(filteredDataConst);
       setIsInputEmpty(false);
-      setItemsToShow(3);
+      // setItemsToShow(3);
       if (list) {
         list.style.visibility = "hidden";
       }
@@ -86,7 +92,7 @@ export default function SearchDiscussion({
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [searchInput]);
+  }, []);
 
   useEffect(() => {
     if (itemsToShow > 3) {
@@ -100,6 +106,10 @@ export default function SearchDiscussion({
       setItemsToShow(JSON.parse(savedItemsToShow));
     }
   }, []);
+
+  // console.log("itemsToShow:", itemsToShow);
+  // console.log("result.length:", result.length);
+  // console.log("isLoading:", isLoading);
 
   return (
     <>
@@ -163,6 +173,13 @@ export default function SearchDiscussion({
         ) : null}
       </div>
 
+      <Link
+        href="/community/discussion/write"
+        className={styles.communityNewPost}
+      >
+        <button className={styles.newThreadBtn}>NEW DISCUSSION</button>
+      </Link>
+
       <ul className={styles.threadList}>
         {result.slice(0, itemsToShow).map((content: any, index: number) => {
           const idToString = content._id.toString();
@@ -194,12 +211,7 @@ export default function SearchDiscussion({
         })}
       </ul>
 
-      <Link
-        href="/community/discussion/write"
-        className={styles.communityNewPost}
-      >
-        <button className={styles.newThreadBtn}>NEW DISCUSSION</button>
-      </Link>
+      {isLoading ? <p>Loading</p> : null}
     </>
   );
 }

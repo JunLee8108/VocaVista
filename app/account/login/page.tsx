@@ -1,10 +1,5 @@
-import Link from "next/link";
-
 import "./page.css";
 import LoginForm from "./LoginForm";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faKey, faComment, faUser } from "@fortawesome/free-solid-svg-icons";
 
 export default async function Account() {
   return (

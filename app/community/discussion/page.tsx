@@ -1,6 +1,7 @@
 import styles from "./page.module.css";
 import SearchDiscussion from "./SearchDiscussion";
-import Link from "next/link";
+import LoadingBeforeLogin from "../../../util/helpers/LoadingBeforeLogin";
+import { cookies } from "next/headers";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComments } from "@fortawesome/free-solid-svg-icons";
@@ -31,20 +32,27 @@ export default async function Community() {
   const commentData = await getCommentData();
   const result = await getDiscussionData();
 
+  const nextCookies = cookies(); // Get cookies object
+  const user = nextCookies.get("user"); // Find cookie
+
   return (
     <>
-      <div className={styles.container}>
-        <h1 className={styles.header}>
-          Community Discussions{" "}
-          <FontAwesomeIcon icon={faComments} style={{ marginLeft: "5px" }} />
-        </h1>
+      {user ? (
+        <div className={styles.container}>
+          <h1 className={styles.header}>
+            Community Discussions{" "}
+            <FontAwesomeIcon icon={faComments} style={{ marginLeft: "5px" }} />
+          </h1>
 
-        <p className={styles.communitySubHeader}>
-          Discover tailored Korean language courses at VocaVista!
-        </p>
+          <p className={styles.communitySubHeader}>
+            Discover tailored Korean language courses at VocaVista!
+          </p>
 
-        <SearchDiscussion result={result} commentData={commentData} />
-      </div>
+          <SearchDiscussion result={result} commentData={commentData} />
+        </div>
+      ) : (
+        <LoadingBeforeLogin />
+      )}
     </>
   );
 }
