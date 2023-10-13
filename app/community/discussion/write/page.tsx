@@ -1,15 +1,29 @@
 "use client";
 
 import LoadingPage from "../../../../util/helpers/LoadingPage";
+import LoadingBeforeLogin from "../../../../util/helpers/LoadingBeforeLogin";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./PostWrite.module.css";
 import { useRouter } from "next/navigation";
+
+type userInfoType = {
+  email: string;
+  firstname: string;
+  lastname: string;
+};
 
 export default function PostWrite() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [isLoading, setLoading] = useState(false);
+  const [isUserLogin, setUserLogin] = useState(false);
+  const [username, setUsername] = useState<userInfoType>({
+    email: "",
+    firstname: "",
+    lastname: "",
+  });
+
   const router = useRouter();
 
   async function handlePublish() {
@@ -31,8 +45,9 @@ export default function PostWrite() {
 
       let discussions = {
         title: title,
-        firstname: "",
-        lastname: "",
+        email: username.email,
+        firstname: username.firstname,
+        lastname: username.lastname,
         content: content,
         createdAt: date,
         updatedAt: "",
@@ -45,9 +60,6 @@ export default function PostWrite() {
 
       res = await res.json();
 
-      // // Debugging
-      // console.log(res);
-
       if (res.toString() === "Success!") {
         setLoading(false);
         router.refresh();
@@ -58,32 +70,71 @@ export default function PostWrite() {
     }
   }
 
+  useEffect(() => {
+    const getCookie = async () => {
+      let resCookie = await fetch("/api/validateToken", {
+        method: "GET",
+        credentials: "include",
+      });
+
+      const userData = await resCookie.json();
+
+      if (userData.error === "Not authorized") {
+        setUserLogin(false);
+      } else {
+        setUserLogin(true);
+        let getUserInfo = await fetch("/api/user", {
+          method: "POST",
+          credentials: "include",
+          body: JSON.stringify(userData.userId),
+        });
+
+        getUserInfo = await getUserInfo.json();
+
+        if ((getUserInfo as any).message === "Success!") {
+          setUsername({
+            email: (getUserInfo as any).email,
+            firstname: (getUserInfo as any).firstname,
+            lastname: (getUserInfo as any).lastname,
+          });
+        } else {
+          alert((getUserInfo as any).message);
+        }
+      }
+    };
+    getCookie();
+  }, []);
+
   return (
     <>
-      <div className={styles.container}>
-        <input
-          type="text"
-          placeholder="Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          className={styles.titleInput}
-        />
+      {isUserLogin ? (
+        <div className={styles.container}>
+          <input
+            type="text"
+            placeholder="Title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            className={styles.titleInput}
+          />
 
-        <textarea
-          placeholder="Write your content..."
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          className={styles.contentTextarea}
-        ></textarea>
+          <textarea
+            placeholder="Write your content..."
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            className={styles.contentTextarea}
+          ></textarea>
 
-        <button
-          onClick={handlePublish}
-          disabled={!title || !content}
-          className={styles.publishBtn}
-        >
-          PUBLISH
-        </button>
-      </div>
+          <button
+            onClick={handlePublish}
+            disabled={!title || !content}
+            className={styles.publishBtn}
+          >
+            PUBLISH
+          </button>
+        </div>
+      ) : (
+        <LoadingBeforeLogin />
+      )}
 
       {isLoading ? <LoadingPage /> : null}
     </>

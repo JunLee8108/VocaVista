@@ -17,6 +17,7 @@ export default async function PostEdit({ params }: { params: postEditID }) {
   const propsResult = {
     _id: result?._id.toString() as string,
     title: result?.title as string,
+    email: result?.email as string,
     firstname: result?.firstname as string,
     lastname: result?.lastname as string,
     content: result?.content as string,

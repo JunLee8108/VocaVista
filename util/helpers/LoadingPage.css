@@ -5,7 +5,7 @@
   left: 0;
   top: 0;
   background-color: rgba(0, 0, 0, 0.4);
-  z-index: 5;
+  z-index: 50;
 }
 
 .loading-container {
@@ -14,7 +14,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 5;
+  z-index: 50;
 }
 
 .loader {

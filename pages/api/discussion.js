@@ -14,6 +14,7 @@ export default async function handler(req, res) {
 
       const discussionInfo = {
         title: data.title,
+        email: data.email,
         firstname: data.firstname,
         lastname: data.lastname,
         content: data.content,

@@ -3,6 +3,8 @@ import cookie from "cookie";
 import { getCookies, setCookie, deleteCookie, getCookie } from "cookies-next";
 
 export default async function handler(req, res) {
+  const jwtSecret = process.env.JWT_SECRET;
+
   try {
     // GET
     if (req.method === "GET") {
@@ -38,6 +40,7 @@ export default async function handler(req, res) {
       return res.status(200).json("Success!");
     }
   } catch (error) {
+    // console.log(error);
     return res.status(401).json({ error: "Not authorized" });
   }
 }

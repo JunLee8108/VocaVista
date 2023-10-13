@@ -2,15 +2,18 @@ import "./page.css";
 import CommentForm from "./CommentForm";
 import clientPromise from "../../../../util/data/database";
 import DeleteComment from "./DeleteComment";
-import DeleteDiscussion from "./DeleteDiscussion";
+import EditAndDelete from "./EditAndDelete";
+import LoadingBeforeLogin from "../../../../util/helpers/LoadingBeforeLogin";
 
 import { ObjectId } from "mongodb";
 import React from "react";
-import Link from "next/link";
+import { cookies } from "next/headers";
 
 export default async function PostDetail({ params }: { params: any }) {
   const db = (await clientPromise).db("voca");
   const parentsID = params.postID;
+  const cookiesList = cookies();
+  const hasCookie = cookiesList.has("token");
 
   const result = await db
     .collection("discussions")
@@ -23,51 +26,54 @@ export default async function PostDetail({ params }: { params: any }) {
 
   return (
     <>
-      {result && (
-        <div className="post-detail-bg">
-          <div className="post-detail-container">
-            <div className="post-detail-delete-edit-container">
-              <Link
-                href={`/community/discussion/edit/${result._id.toString()}`}
-              >
-                <button className="post-detail-edit">EDIT</button>
-              </Link>
+      {hasCookie ? (
+        <>
+          {result && (
+            <div className="post-detail-bg">
+              <div className="post-detail-container">
+                <div className="post-detail-delete-edit-container">
+                  <EditAndDelete
+                    result={result._id.toString()}
+                    email={result.email}
+                  />
+                </div>
 
-              <DeleteDiscussion result={result._id.toString()} />
+                <p className="post-detail-date">
+                  {result.updatedAt === "" ? (
+                    <>{result.createdAt}</>
+                  ) : (
+                    <>{result.updatedAt} Edited</>
+                  )}
+                </p>
+                <h1 className="post-detail-header">{result.title}</h1>
+                <p className="post-detail-content">{result.content}</p>
+
+                <div className="commentsSection">
+                  <p className="comments-header">Comments:</p>
+                  {commentData.map((contentForcomment: any, index: any) => {
+                    return (
+                      <React.Fragment key={index}>
+                        <p className="comments-date">
+                          {contentForcomment.createdAt}
+                        </p>
+
+                        <p className="comments">{contentForcomment.content}</p>
+
+                        <DeleteComment
+                          contentForcomment={contentForcomment._id.toString()}
+                        />
+                      </React.Fragment>
+                    );
+                  })}
+                </div>
+
+                <CommentForm parentsID={parentsID} />
+              </div>
             </div>
-
-            <p className="post-detail-date">
-              {result.updatedAt === "" ? (
-                <>{result.createdAt}</>
-              ) : (
-                <>{result.updatedAt} Edited</>
-              )}
-            </p>
-            <h1 className="post-detail-header">{result.title}</h1>
-            <p className="post-detail-content">{result.content}</p>
-
-            <div className="commentsSection">
-              <p className="comments-header">Comments:</p>
-              {commentData.map((contentForcomment: any, index: any) => {
-                return (
-                  <React.Fragment key={index}>
-                    <p className="comments-date">
-                      {contentForcomment.createdAt}
-                    </p>
-
-                    <p className="comments">{contentForcomment.content}</p>
-
-                    <DeleteComment
-                      contentForcomment={contentForcomment._id.toString()}
-                    />
-                  </React.Fragment>
-                );
-              })}
-            </div>
-
-            <CommentForm parentsID={parentsID} />
-          </div>
-        </div>
+          )}
+        </>
+      ) : (
+        <LoadingBeforeLogin />
       )}
     </>
   );

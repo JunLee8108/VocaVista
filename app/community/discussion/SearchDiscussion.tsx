@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 interface discussionProps {
   _id: string;
   title: string;
+  email: string;
   firstname: string;
   lastname: string;
   content: string;
@@ -35,7 +36,6 @@ export default function SearchDiscussion({
   const [isInputEmpty, setIsInputEmpty] = useState(true);
   const [isLoading, setLoading] = useState(false);
   const [itemsToShow, setItemsToShow] = useState(3);
-  const [discussionCount, setDiscussionCount] = useState(0);
   const [filteredData, setFilteredData] = useState<discussionProps[]>([]);
 
   const handleScroll = () => {

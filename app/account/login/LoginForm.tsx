@@ -51,9 +51,7 @@ export default function LoginForm() {
         if (validationResponse.ok) {
           const userData = await validationResponse.json();
           router.refresh();
-          router.replace("/");
-
-          // console.log(userData); // Log the user data or set it to state
+          router.back();
         } else {
           console.error("Failed to validate token");
         }

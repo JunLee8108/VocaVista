@@ -16,6 +16,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 type userInfoType = {
+  email: string;
   firstname: string;
   lastname: string;
 };
@@ -30,6 +31,7 @@ export default function Navbar() {
   const [isUserLogin, setUserLogin] = useState(false);
   const [isLoading, setLoading] = useState(false);
   const [username, setUsername] = useState<userInfoType>({
+    email: "",
     firstname: "",
     lastname: "",
   });
@@ -128,10 +130,15 @@ export default function Navbar() {
 
         getUserInfo = await getUserInfo.json();
 
-        setUsername({
-          firstname: (getUserInfo as any).firstname,
-          lastname: (getUserInfo as any).lastname,
-        });
+        if ((getUserInfo as any).message === "Success!") {
+          setUsername({
+            email: (getUserInfo as any).email,
+            firstname: (getUserInfo as any).firstname,
+            lastname: (getUserInfo as any).lastname,
+          });
+        } else {
+          alert((getUserInfo as any).message);
+        }
       }
     };
     getCookie();

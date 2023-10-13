@@ -11,14 +11,13 @@ export default async function handler(req, res) {
         .collection("users")
         .findOne({ _id: new ObjectId(data) });
 
-      //   console.log(existingUser);
-
       if (!existingUser) {
-        return res.status(401).json("User doesn't exist");
+        return res.status(401).json({ message: "User doesn't exist" });
       }
 
       res.status(200).json({
         message: "Success!",
+        email: existingUser.email,
         firstname: existingUser.firstname,
         lastname: existingUser.lastname,
       });
