@@ -25,12 +25,7 @@ export default async function handler(req, res) {
         path: "/",
         domain: "voca-vista.vercel.app",
       });
-      deleteCookie("token", {
-        req,
-        res,
-        path: "/",
-        domain: "voca-vista.vercel.app",
-      });
+      deleteCookie("token", { req, res, path: "/", domain: "localhost" });
 
       const userCookie = getCookie("user", { req, res });
       const tokenCookie = getCookie("user", { req, res });
@@ -42,7 +37,7 @@ export default async function handler(req, res) {
       return res.status(200).json("Success!");
     }
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     return res.status(401).json({ error: "Not authorized" });
   }
 }

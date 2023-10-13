@@ -15,7 +15,6 @@ import {
   faSquareXmark,
   faCircleArrowLeft,
 } from "@fortawesome/free-solid-svg-icons";
-import { getCookies, setCookie, deleteCookie, getCookie } from "cookies-next";
 
 export default function Navbar() {
   const [isMenuClick, setMenuClick] = useState(false);
@@ -103,24 +102,26 @@ export default function Navbar() {
 
   useEffect(() => {
     const getCookie = async () => {
-      let resCookie = await fetch("/api/getCookie", {
+      let resCookie = await fetch("/api/validateToken", {
         method: "GET",
         credentials: "include",
       });
 
       const userData = await resCookie.json();
 
-      if (userData.toString() === "Not logined") {
+      if (userData.error === "Not authorized") {
         setUserLogin(false);
       } else {
         setUserLogin(true);
       }
+
+      // console.log(userData.userId);
     };
     getCookie();
   }, [pathname]);
 
   const deleteCookie = async () => {
-    let resCookie = await fetch("/api/getCookie", {
+    let resCookie = await fetch("/api/validateToken", {
       method: "POST",
       credentials: "include",
       body: JSON.stringify("delete"),
