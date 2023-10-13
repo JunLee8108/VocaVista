@@ -27,12 +27,26 @@ export default async function handler(req, res) {
 
       return res.status(200).json(decoded);
     } else if (req.method === "POST") {
-      deleteCookie("token", {
-        req,
-        res,
-        path: "/",
-        domain: "voca-vista.vercel.app",
-      });
+      // deleteCookie("token", {
+      //   req,
+      //   res,
+      //   path: "/",
+      //   domain: "voca-vista.vercel.app",
+      // });
+
+      const deleteToken = getCookie("token", { req, res });
+
+      res.setHeader(
+        "Set-Cookie",
+        cookie.serialize("token", deleteToken, {
+          httpOnly: true,
+          secure: process.env.NODE_ENV !== "development",
+          sameSite: "strict",
+          maxAge: 0,
+          path: "/",
+        })
+      );
+
       return res.status(200).json("Success!");
     }
   } catch (error) {
