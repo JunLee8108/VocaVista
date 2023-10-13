@@ -33,11 +33,11 @@ export default async function Community() {
   const result = await getDiscussionData();
 
   const nextCookies = cookies(); // Get cookies object
-  const user = nextCookies.get("user"); // Find cookie
+  const token = nextCookies.get("token"); // Find cookie
 
   return (
     <>
-      {user ? (
+      {token ? (
         <div className={styles.container}>
           <h1 className={styles.header}>
             Community Discussions{" "}

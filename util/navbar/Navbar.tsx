@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, MouseEvent } from "react";
 import { navbarList } from "../data/data";
@@ -16,6 +15,11 @@ import {
   faCircleArrowLeft,
 } from "@fortawesome/free-solid-svg-icons";
 
+type userInfoType = {
+  firstname: string;
+  lastname: string;
+};
+
 export default function Navbar() {
   const [isMenuClick, setMenuClick] = useState(false);
   const [isSubmenuClick, setSubmenuClick] = useState(false);
@@ -25,8 +29,11 @@ export default function Navbar() {
   const [mobileMenuNumber, setMobileMenuNumber] = useState(0);
   const [isUserLogin, setUserLogin] = useState(false);
   const [isLoading, setLoading] = useState(false);
+  const [username, setUsername] = useState<userInfoType>({
+    firstname: "",
+    lastname: "",
+  });
 
-  const router = useRouter();
   const pathname = usePathname();
 
   const handleClickMenuBg = (e: MouseEvent<HTMLElement>) => {
@@ -113,9 +120,19 @@ export default function Navbar() {
         setUserLogin(false);
       } else {
         setUserLogin(true);
-      }
+        let getUserInfo = await fetch("/api/user", {
+          method: "POST",
+          credentials: "include",
+          body: JSON.stringify(userData.userId),
+        });
 
-      // console.log(userData.userId);
+        getUserInfo = await getUserInfo.json();
+
+        setUsername({
+          firstname: (getUserInfo as any).firstname,
+          lastname: (getUserInfo as any).lastname,
+        });
+      }
     };
     getCookie();
   }, [pathname]);
@@ -132,13 +149,11 @@ export default function Navbar() {
     if (userData === "Success!") {
       setUserLogin(false);
       setLoading(true);
-      // const timer = setTimeout(() => {
-      //   window.location.reload();
-      // }, 500);
       const timer = setTimeout(() => {
-        router.refresh();
-        setLoading(false);
+        window.location.reload();
       }, 500);
+    } else {
+      alert("Token doesn't exist");
     }
   };
 
@@ -222,16 +237,35 @@ export default function Navbar() {
               );
             })}
 
-            <li>
-              {isUserLogin ? (
-                <button
+            {isUserLogin ? (
+              <li>
+                <Link href="/account/user" className="navbar-link">
+                  {username.firstname}
+                </Link>
+              </li>
+            ) : null}
+
+            {isUserLogin ? (
+              <li>
+                <Link
+                  href=""
+                  className="navbar-link"
                   onClick={() => {
                     deleteCookie();
                   }}
+                  style={{
+                    border: "2px solid white",
+                    borderRadius: "5px",
+                    marginLeft: "-20px",
+                  }}
                 >
-                  Logout
-                </button>
-              ) : (
+                  Sign Out
+                </Link>
+              </li>
+            ) : null}
+
+            {isUserLogin ? null : (
+              <li>
                 <Link
                   href="/account/login"
                   className="navbar-link"
@@ -243,8 +277,8 @@ export default function Navbar() {
                     className="navbar-account-icon"
                   />
                 </Link>
-              )}
-            </li>
+              </li>
+            )}
           </div>
 
           {/* Navbar flexbox mobile */}
@@ -317,17 +351,50 @@ export default function Navbar() {
                   );
                 })}
                 <li>
-                  <Link
-                    href="/account/login"
-                    className="navbar-link"
-                    onClick={() => {
-                      mobilePageTransition();
-                      removeSessionStorage();
-                    }}
-                  >
-                    ACCOUNT
-                  </Link>
+                  {isUserLogin ? (
+                    <Link
+                      href="/account/user"
+                      className="navbar-link-mobile"
+                      onClick={() => {
+                        mobilePageTransition();
+                        removeSessionStorage();
+                      }}
+                    >
+                      ACCOUNT
+                    </Link>
+                  ) : (
+                    <Link
+                      href="/account/login"
+                      className="navbar-link-mobile"
+                      onClick={() => {
+                        mobilePageTransition();
+                        removeSessionStorage();
+                      }}
+                    >
+                      ACCOUNT
+                    </Link>
+                  )}
                 </li>
+
+                {isUserLogin ? (
+                  <li>
+                    <Link
+                      href=""
+                      className="navbar-link-mobile"
+                      onClick={() => {
+                        deleteCookie();
+                      }}
+                      style={{
+                        border: "2px solid white",
+                        borderRadius: "5px",
+                        padding: "10px",
+                        marginLeft: "-2px",
+                      }}
+                    >
+                      Sign Out
+                    </Link>
+                  </li>
+                ) : null}
               </div>
             </div>
           ) : null}
