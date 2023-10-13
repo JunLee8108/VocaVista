@@ -132,8 +132,12 @@ export default function Navbar() {
     if (userData === "Success!") {
       setUserLogin(false);
       setLoading(true);
+      // const timer = setTimeout(() => {
+      //   window.location.reload();
+      // }, 500);
       const timer = setTimeout(() => {
-        window.location.reload();
+        router.refresh();
+        setLoading(false);
       }, 500);
     }
   };
