@@ -12,9 +12,8 @@ async function getCommentData() {
   // http://localhost:3000/
   const res = await fetch("https://voca-vista.vercel.app/api/comment", {
     method: "GET",
-    // cache: "no-store",
+    cache: "no-store",
   });
-  revalidatePath("/community/discussion");
 
   return res.json();
 }
@@ -24,9 +23,8 @@ async function getDiscussionData() {
   // http://localhost:3000/
   const res = await fetch("https://voca-vista.vercel.app/api/discussion", {
     method: "GET",
-    // cache: "no-store",
+    cache: "no-store",
   });
-  revalidatePath("/community/discussion");
 
   return res.json();
 }
@@ -34,8 +32,6 @@ async function getDiscussionData() {
 export default async function Community() {
   const commentData = await getCommentData();
   const result = await getDiscussionData();
-
-  console.log(commentData);
 
   const nextCookies = cookies(); // Get cookies object
   const token = nextCookies.get("token"); // Find cookie
