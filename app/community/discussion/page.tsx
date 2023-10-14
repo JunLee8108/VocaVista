@@ -28,25 +28,25 @@ async function getDiscussionData() {
   return res.json();
 }
 
-// async function as() {
+// async function getUserInfo() {
 //   // https://voca-vista.vercel.app/
 //   // http://localhost:3000/
 //   const cookieStore = cookies();
 //   const token = cookieStore.get("token");
-//   const res = await fetch("http://localhost:3000/api/validateToken", {
-//     method: "GET",
-//     cache: "no-store",
+//   let res = await fetch("http://localhost:3000/api/validateToken", {
+//     method: "POST",
+//     body: JSON.stringify(token),
 //   });
 
-//   return res.json();
+//   res = await res.json();
+
+//   return res;
 // }
 
 export default async function Community() {
   const commentData = await getCommentData();
   const result = await getDiscussionData();
-  // const a = await as();
-
-  // console.log(a);
+  // const a = await getUserInfo();
 
   const nextCookies = cookies(); // Get cookies object
   const token = nextCookies.get("token"); // Find cookie
