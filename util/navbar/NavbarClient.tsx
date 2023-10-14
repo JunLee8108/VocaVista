@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useState, useEffect, MouseEvent } from "react";
 import { navbarList } from "../data/data";
 import "./Navbar.css";
@@ -21,7 +20,13 @@ type userInfoType = {
   lastname: string;
 };
 
-export default function NavbarClient({ user }: { user: Response }) {
+export default function NavbarClient({
+  user,
+  hasCookie,
+}: {
+  user: Response;
+  hasCookie: boolean;
+}) {
   const [isMenuClick, setMenuClick] = useState(false);
   const [isSubmenuClick, setSubmenuClick] = useState(false);
   const [handleMenuClick, setHandleMenuClick] = useState(false);
@@ -35,8 +40,6 @@ export default function NavbarClient({ user }: { user: Response }) {
     firstname: "",
     lastname: "",
   });
-
-  const pathname = usePathname();
 
   const handleClickMenuBg = (e: MouseEvent<HTMLElement>) => {
     const target = document.querySelector(".navbar-flexbox-mobile-menu-bg");
@@ -65,6 +68,26 @@ export default function NavbarClient({ user }: { user: Response }) {
 
   const removeSessionStorage = () => {
     sessionStorage.removeItem("itemsToShow");
+  };
+
+  const deleteCookie = async () => {
+    let resCookie = await fetch("/api/validateToken", {
+      method: "DELETE",
+      credentials: "include",
+      body: JSON.stringify("delete"),
+    });
+
+    const userData = await resCookie.json();
+
+    if (userData === "Success!") {
+      setUserLogin(false);
+      setLoading(true);
+      const timer = setTimeout(() => {
+        window.location.reload();
+      }, 500);
+    } else {
+      alert("Token doesn't exist");
+    }
   };
 
   useEffect(() => {
@@ -109,41 +132,6 @@ export default function NavbarClient({ user }: { user: Response }) {
     };
   }, []);
 
-  //   useEffect(() => {
-  //     const getCookie = async () => {
-  //       let resCookie = await fetch("/api/validateToken", {
-  //         method: "GET",
-  //         credentials: "include",
-  //       });
-
-  //       const userData = await resCookie.json();
-
-  //       if (userData.error === "Not authorized") {
-  //         setUserLogin(false);
-  //       } else {
-  //         setUserLogin(true);
-  //         let getUserInfo = await fetch("/api/user", {
-  //           method: "POST",
-  //           credentials: "include",
-  //           body: JSON.stringify(userData.userId),
-  //         });
-
-  //         getUserInfo = await getUserInfo.json();
-
-  //         if ((getUserInfo as any).message === "Success!") {
-  //           setUsername({
-  //             email: (getUserInfo as any).email,
-  //             firstname: (getUserInfo as any).firstname,
-  //             lastname: (getUserInfo as any).lastname,
-  //           });
-  //         } else {
-  //           alert((getUserInfo as any).message);
-  //         }
-  //       }
-  //     };
-  //     getCookie();
-  //   }, [pathname]);
-
   useEffect(() => {
     if ((user as any).error !== "Not authorized") {
       setUserLogin(true);
@@ -154,26 +142,6 @@ export default function NavbarClient({ user }: { user: Response }) {
       });
     }
   }, [user]);
-
-  const deleteCookie = async () => {
-    let resCookie = await fetch("/api/validateToken", {
-      method: "DELETE",
-      credentials: "include",
-      body: JSON.stringify("delete"),
-    });
-
-    const userData = await resCookie.json();
-
-    if (userData === "Success!") {
-      setUserLogin(false);
-      setLoading(true);
-      const timer = setTimeout(() => {
-        window.location.reload();
-      }, 500);
-    } else {
-      alert("Token doesn't exist");
-    }
-  };
 
   return (
     <>
@@ -255,7 +223,7 @@ export default function NavbarClient({ user }: { user: Response }) {
               );
             })}
 
-            {isUserLogin ? (
+            {hasCookie ? (
               <li>
                 <Link href="/account/user" className="navbar-link">
                   {username.firstname}
@@ -263,7 +231,7 @@ export default function NavbarClient({ user }: { user: Response }) {
               </li>
             ) : null}
 
-            {isUserLogin ? (
+            {hasCookie ? (
               <li>
                 <Link
                   href=""
@@ -283,7 +251,7 @@ export default function NavbarClient({ user }: { user: Response }) {
               </li>
             ) : null}
 
-            {isUserLogin ? null : (
+            {hasCookie ? null : (
               <li>
                 <Link
                   href="/account/login"
@@ -370,7 +338,7 @@ export default function NavbarClient({ user }: { user: Response }) {
                   );
                 })}
                 <li>
-                  {isUserLogin ? (
+                  {hasCookie ? (
                     <Link
                       href="/account/user"
                       className="navbar-link-mobile"
@@ -395,7 +363,7 @@ export default function NavbarClient({ user }: { user: Response }) {
                   )}
                 </li>
 
-                {isUserLogin ? (
+                {hasCookie ? (
                   <li>
                     <Link
                       href=""

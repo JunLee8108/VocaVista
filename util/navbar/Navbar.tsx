@@ -20,9 +20,14 @@ async function getUserInfo() {
 export default async function Navbar() {
   const user = await getUserInfo();
 
+  // console.log(user);
+
+  const cookiesList = cookies();
+  const hasCookie = cookiesList.has("token");
+
   return (
     <>
-      <NavbarClient user={user} />
+      <NavbarClient user={user} hasCookie={hasCookie} />
     </>
   );
 }

@@ -2,6 +2,7 @@ import styles from "./page.module.css";
 import SearchDiscussion from "./SearchDiscussion";
 import LoadingBeforeLogin from "../../../util/helpers/LoadingBeforeLogin";
 import { cookies } from "next/headers";
+import { revalidatePath } from "next/cache";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComments } from "@fortawesome/free-solid-svg-icons";
@@ -11,8 +12,9 @@ async function getCommentData() {
   // http://localhost:3000/
   const res = await fetch("https://voca-vista.vercel.app/api/comment", {
     method: "GET",
-    cache: "no-store",
+    // cache: "no-store",
   });
+  revalidatePath("/community/discussion");
 
   return res.json();
 }
@@ -22,31 +24,18 @@ async function getDiscussionData() {
   // http://localhost:3000/
   const res = await fetch("https://voca-vista.vercel.app/api/discussion", {
     method: "GET",
-    cache: "no-store",
+    // cache: "no-store",
   });
+  revalidatePath("/community/discussion");
 
   return res.json();
 }
 
-// async function getUserInfo() {
-//   // https://voca-vista.vercel.app/
-//   // http://localhost:3000/
-//   const cookieStore = cookies();
-//   const token = cookieStore.get("token");
-//   let res = await fetch("http://localhost:3000/api/validateToken", {
-//     method: "POST",
-//     body: JSON.stringify(token),
-//   });
-
-//   res = await res.json();
-
-//   return res;
-// }
-
 export default async function Community() {
   const commentData = await getCommentData();
   const result = await getDiscussionData();
-  // const a = await getUserInfo();
+
+  console.log(commentData);
 
   const nextCookies = cookies(); // Get cookies object
   const token = nextCookies.get("token"); // Find cookie

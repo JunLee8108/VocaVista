@@ -9,7 +9,6 @@ import { useState, useEffect } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment, faUser, faKey } from "@fortawesome/free-solid-svg-icons";
-import { setCookie } from "cookies-next";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
@@ -49,7 +48,7 @@ export default function LoginForm() {
         });
 
         if (validationResponse.ok) {
-          const userData = await validationResponse.json();
+          // const userData = await validationResponse.json();
           router.refresh();
           router.back();
         } else {
