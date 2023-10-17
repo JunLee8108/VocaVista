@@ -223,7 +223,7 @@ export default function NavbarClient({
               );
             })}
 
-            {hasCookie && !(user as any).error ? (
+            {hasCookie ? (
               <li>
                 <Link href="/account/user" className="navbar-link">
                   {username.firstname}
@@ -231,7 +231,7 @@ export default function NavbarClient({
               </li>
             ) : null}
 
-            {hasCookie && !(user as any).error ? (
+            {hasCookie ? (
               <li>
                 <Link
                   href=""
