@@ -5,15 +5,13 @@ import { ObjectId } from "mongodb";
 import { getCookies, setCookie, deleteCookie, getCookie } from "cookies-next";
 
 export default async function handler(req, res) {
-  const jwtSecret = process.env.JWT_SECRET;
-
   try {
     // GET
     if (req.method === "GET") {
       const token = getCookie("token", { req, res });
 
       if (!token) {
-        return res.status(200).json({ error: "Not authorized" });
+        return res.status(200).json({ error: "Token doesn't exist" });
       }
 
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
@@ -25,7 +23,7 @@ export default async function handler(req, res) {
       const data = JSON.parse(req.body);
 
       if (!data.value) {
-        return res.status(200).json({ error: "Not authorized" });
+        return res.status(200).json({ error: "Token doesn't exist" });
       }
 
       try {
@@ -37,7 +35,7 @@ export default async function handler(req, res) {
           .findOne({ _id: new ObjectId(decoded.userId) });
 
         if (!existingUser) {
-          return res.status(401).json({ message: "User doesn't exist" });
+          return res.status(401).json({ error: "User doesn't exist" });
         }
 
         return res.status(200).json({
@@ -47,7 +45,7 @@ export default async function handler(req, res) {
           lastname: existingUser.lastname,
         });
       } catch (error) {
-        return res.status(401).json({ error: "Not authorized" });
+        return res.status(401).json({ error: "JWT malformed" });
       }
     }
     // DELETE

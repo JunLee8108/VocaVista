@@ -133,7 +133,7 @@ export default function NavbarClient({
   }, []);
 
   useEffect(() => {
-    if ((user as any).error !== "Not authorized") {
+    if (!(user as any).error) {
       setUserLogin(true);
       setUsername({
         email: (user as any).email,
@@ -223,7 +223,7 @@ export default function NavbarClient({
               );
             })}
 
-            {hasCookie ? (
+            {hasCookie && !(user as any).error ? (
               <li>
                 <Link href="/account/user" className="navbar-link">
                   {username.firstname}
@@ -231,7 +231,7 @@ export default function NavbarClient({
               </li>
             ) : null}
 
-            {hasCookie ? (
+            {hasCookie && !(user as any).error ? (
               <li>
                 <Link
                   href=""
