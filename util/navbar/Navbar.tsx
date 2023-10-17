@@ -20,7 +20,7 @@ async function getUserInfo() {
 export default async function Navbar() {
   const user = await getUserInfo();
 
-  // console.log(user);
+  console.log(user);
 
   const cookiesList = cookies();
   const hasCookie = cookiesList.has("token");
