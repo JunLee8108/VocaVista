@@ -2,15 +2,32 @@ import "./page.css";
 import LoginForm from "./LoginForm";
 import { cookies } from "next/headers";
 
+async function getUserInfo() {
+  // https://voca-vista.vercel.app/
+  // http://localhost:3000/
+  const cookieStore = cookies();
+  const token = cookieStore.get("token");
+  let res = await fetch("https://voca-vista.vercel.app/api/validateToken", {
+    method: "POST",
+    body: JSON.stringify(token),
+    // cache: "no-store",
+  });
+
+  res = await res.json();
+
+  return res;
+}
+
 export default async function Account() {
   const cookiesList = cookies();
   const hasCookie = cookiesList.has("token");
+  const user = await getUserInfo();
 
   return (
     <>
-      {hasCookie ? (
+      {hasCookie || !(user as any).error ? (
         <div className="account-container display-flex justify-content-center align-items-center">
-          <h1>You already signed in.</h1>
+          <h1>Unusual Access!</h1>
         </div>
       ) : (
         <div className="account-container display-flex justify-content-center align-items-center">
