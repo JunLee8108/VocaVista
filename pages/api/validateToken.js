@@ -3,12 +3,24 @@ import cookie from "cookie";
 import clientPromise from "../../util/data/database";
 import { ObjectId } from "mongodb";
 import { getCookies, setCookie, deleteCookie, getCookie } from "cookies-next";
+import { headers } from "next/headers";
+import { cookies } from "next/headers";
 
 export default async function handler(req, res) {
   try {
     // GET
     if (req.method === "GET") {
-      const token = getCookie("token", { req, res });
+      // const token = getCookie("token", { req, res });
+
+      let token;
+
+      if (req.headers.authorization) {
+        token = req.headers.authorization;
+      } else {
+        token = getCookie("token", { req, res });
+      }
+
+      // console.log(req.headers.authorization);
 
       if (!token) {
         return res.status(200).json({ error: "Token doesn't exist" });
@@ -70,6 +82,7 @@ export default async function handler(req, res) {
       return res.status(200).json("Success!");
     }
   } catch (error) {
+    console.log(error);
     return res.status(401).json({ error: "Not authorized" });
   }
 }

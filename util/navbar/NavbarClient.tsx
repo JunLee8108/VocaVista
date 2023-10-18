@@ -117,7 +117,7 @@ export default function NavbarClient() {
 
   const login = CheckIfUserLogin();
 
-  //   console.log(login);
+  // console.log(login);
 
   return (
     <>

@@ -34,15 +34,21 @@ async function getUserInfo() {
   // http://localhost:3000/
   const cookieStore = cookies();
   const token = cookieStore.get("token");
-  let res = await fetch("https://voca-vista.vercel.app/api/validateToken", {
-    method: "POST",
-    body: JSON.stringify(token),
-    // cache: "no-store",
-  });
 
-  res = await res.json();
+  if (token && token.value) {
+    let res = await fetch("https://voca-vista.vercel.app/api/validateToken", {
+      method: "GET",
+      headers: {
+        Authorization: token.value,
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    });
 
-  return res;
+    res = await res.json();
+
+    return res;
+  }
 }
 
 export default async function Community() {
@@ -50,12 +56,24 @@ export default async function Community() {
   const result = await getDiscussionData();
   const user = await getUserInfo();
 
-  const nextCookies = cookies(); // Get cookies object
-  const token = nextCookies.get("token"); // Find cookie
+  const cookieStore = cookies();
+  const token = cookieStore.get("token");
+
+  const isError = () => {
+    if (user) {
+      if ((user as any).error) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+  };
 
   return (
     <>
-      {!(user as any).error ? (
+      {!isError() || !token ? (
+        <LoadingBeforeLogin />
+      ) : (
         <div className={styles.container}>
           <h1 className={styles.header}>
             Community Discussions{" "}
@@ -68,8 +86,6 @@ export default async function Community() {
 
           <SearchDiscussion result={result} commentData={commentData} />
         </div>
-      ) : (
-        <LoadingBeforeLogin />
       )}
     </>
   );
