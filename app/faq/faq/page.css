@@ -10,6 +10,7 @@
   opacity: 0;
   transform: translateY(20px);
   animation: slideUp 0.7s 0.2s forwards;
+  margin-bottom: 30px;
 }
 
 .faqHeader {
@@ -59,20 +60,14 @@
 
 .answer {
   transform: translateY(-20px);
-  opacity: 0;
-  visibility: hidden;
   transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out,
     visibility 0.3s ease-in-out;
+  margin-top: 50px;
+  margin-bottom: 0;
   padding-left: 20px;
   border-left: 3px solid #8c65d3;
   color: #555;
   line-height: 30px;
-}
-
-.faq.active .answer {
-  transform: translateY(0);
-  opacity: 1;
-  visibility: visible;
 }
 
 @keyframes slideUp {
@@ -82,7 +77,25 @@
   }
 }
 
+.toggle {
+  display: none;
+}
+
+.toggle + .question + .answer {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.toggle:checked + .question + .answer {
+  opacity: 1;
+  visibility: visible;
+}
+
 @media screen and (max-width: 767px) {
+  .faqSection {
+    margin-bottom: 15px;
+  }
+
   .faqHeader {
     font-size: 1.2rem;
     padding-top: 3px;

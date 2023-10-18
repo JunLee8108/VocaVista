@@ -201,7 +201,7 @@ export default function NavbarClient() {
 
             {login.isUserLogin && login.username.firstname ? (
               <li>
-                <Link href="/account/user" className="navbar-link">
+                <Link href="/profile/user" className="navbar-link">
                   {login.username.firstname}
                 </Link>
               </li>

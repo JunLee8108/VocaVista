@@ -3,17 +3,13 @@ import CommentForm from "./CommentForm";
 import clientPromise from "../../../../util/data/database";
 import DeleteComment from "./DeleteComment";
 import EditAndDelete from "./EditAndDelete";
-import LoadingBeforeLogin from "../../../../util/helpers/LoadingBeforeLogin";
 
 import { ObjectId } from "mongodb";
 import React from "react";
-import { cookies } from "next/headers";
 
 export default async function PostDetail({ params }: { params: any }) {
   const db = (await clientPromise).db("voca");
   const parentsID = params.postID;
-  const cookiesList = cookies();
-  const hasCookie = cookiesList.has("token");
 
   const result = await db
     .collection("discussions")
@@ -26,55 +22,51 @@ export default async function PostDetail({ params }: { params: any }) {
 
   return (
     <>
-      {hasCookie ? (
-        <>
-          {result && (
-            <div className="post-detail-bg">
-              <div className="post-detail-container">
-                <div className="post-detail-delete-edit-container">
-                  <EditAndDelete
-                    result={result._id.toString()}
-                    email={result.email}
-                  />
-                </div>
-
-                <p className="post-detail-date">
-                  {result.updatedAt === "" ? (
-                    <>{result.createdAt}</>
-                  ) : (
-                    <>{result.updatedAt} Edited</>
-                  )}
-                </p>
-                <h1 className="post-detail-header">{result.title}</h1>
-                <p className="post-detail-content">{result.content}</p>
-
-                <div className="commentsSection">
-                  <p className="comments-header">Comments:</p>
-                  {commentData.map((contentForcomment: any, index: any) => {
-                    return (
-                      <React.Fragment key={index}>
-                        <p className="comments-date">
-                          {contentForcomment.createdAt}
-                        </p>
-
-                        <p className="comments">{contentForcomment.content}</p>
-
-                        <DeleteComment
-                          contentForcomment={contentForcomment._id.toString()}
-                        />
-                      </React.Fragment>
-                    );
-                  })}
-                </div>
-
-                <CommentForm parentsID={parentsID} />
+      <>
+        {result && (
+          <div className="post-detail-bg">
+            <div className="post-detail-container">
+              <div className="post-detail-delete-edit-container">
+                <EditAndDelete
+                  result={result._id.toString()}
+                  email={result.email}
+                />
               </div>
+
+              <p className="post-detail-date">
+                {result.updatedAt === "" ? (
+                  <>{result.createdAt}</>
+                ) : (
+                  <>{result.updatedAt} Edited</>
+                )}
+              </p>
+              <h1 className="post-detail-header">{result.title}</h1>
+              <p className="post-detail-content">{result.content}</p>
+
+              <div className="commentsSection">
+                <p className="comments-header">Comments:</p>
+                {commentData.map((contentForcomment: any, index: any) => {
+                  return (
+                    <React.Fragment key={index}>
+                      <p className="comments-date">
+                        {contentForcomment.createdAt}
+                      </p>
+
+                      <p className="comments">{contentForcomment.content}</p>
+
+                      <DeleteComment
+                        contentForcomment={contentForcomment._id.toString()}
+                      />
+                    </React.Fragment>
+                  );
+                })}
+              </div>
+
+              <CommentForm parentsID={parentsID} />
             </div>
-          )}
-        </>
-      ) : (
-        <LoadingBeforeLogin />
-      )}
+          </div>
+        )}
+      </>
     </>
   );
 }

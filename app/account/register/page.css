@@ -3,9 +3,6 @@
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: slideUp 0.7s 0.2s forwards;
 }
 
 .register-introduction {
@@ -142,13 +139,6 @@
 
 .register-button-flexbox button:hover {
   opacity: 0.4;
-}
-
-@keyframes slideUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1280px) {

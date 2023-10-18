@@ -1,6 +1,3 @@
-"use client";
-
-import React, { useState } from "react";
 import "./page.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -34,12 +31,6 @@ const faqs: FAQ[] = [
 ];
 
 export default function FAQSection() {
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
-
-  const toggleAnswer = (index: number) => {
-    setActiveIndex(activeIndex === index ? null : index);
-  };
-
   return (
     <div className="faqSection">
       <h1 className="faqHeader">
@@ -56,17 +47,15 @@ export default function FAQSection() {
       </p>
 
       {faqs.map((faq, index) => (
-        <div
-          key={index}
-          className={`faq ${activeIndex === index ? `active` : ""}`}
-        >
-          <button onClick={() => toggleAnswer(index)} className="question">
+        <div key={index} className="faq">
+          <input type="checkbox" id={`faq${index}`} className="toggle" />
+          <label htmlFor={`faq${index}`} className="question">
             <FontAwesomeIcon
               icon={faSquareCheck}
               style={{ marginRight: "13px" }}
             />
             {faq.question}
-          </button>
+          </label>
           <p className="answer">{faq.answer}</p>
         </div>
       ))}
