@@ -4,7 +4,6 @@ import cookie from "cookie";
 
 export default async function handler(req, res) {
   const bcrypt = require("bcryptjs");
-  const bcryptSalt = bcrypt.genSaltSync(10);
   const jwtSecret = process.env.JWT_SECRET;
 
   try {

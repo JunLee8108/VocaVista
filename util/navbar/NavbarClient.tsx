@@ -5,6 +5,7 @@ import { useState, useEffect, MouseEvent } from "react";
 import { navbarList } from "../data/data";
 import "./Navbar.css";
 import LoadingPage from "../helpers/LoadingPage";
+import CheckIfUserLogin from "../helpers/\bCheckIfUserLogin";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faBars } from "@fortawesome/free-solid-svg-icons";
@@ -14,32 +15,14 @@ import {
   faCircleArrowLeft,
 } from "@fortawesome/free-solid-svg-icons";
 
-type userInfoType = {
-  email: string;
-  firstname: string;
-  lastname: string;
-};
-
-export default function NavbarClient({
-  user,
-  hasCookie,
-}: {
-  user: Response;
-  hasCookie: boolean;
-}) {
+export default function NavbarClient() {
   const [isMenuClick, setMenuClick] = useState(false);
   const [isSubmenuClick, setSubmenuClick] = useState(false);
   const [handleMenuClick, setHandleMenuClick] = useState(false);
   const [handleSubmenuClick, setHandleSubmenuClick] = useState(false);
   const [mobileMenuName, setMobileMenuName] = useState("");
   const [mobileMenuNumber, setMobileMenuNumber] = useState(0);
-  const [isUserLogin, setUserLogin] = useState(false);
   const [isLoading, setLoading] = useState(false);
-  const [username, setUsername] = useState<userInfoType>({
-    email: "",
-    firstname: "",
-    lastname: "",
-  });
 
   const handleClickMenuBg = (e: MouseEvent<HTMLElement>) => {
     const target = document.querySelector(".navbar-flexbox-mobile-menu-bg");
@@ -80,7 +63,7 @@ export default function NavbarClient({
     const userData = await resCookie.json();
 
     if (userData === "Success!") {
-      setUserLogin(false);
+      //   setUserLogin(false);
       setLoading(true);
       const timer = setTimeout(() => {
         window.location.reload();
@@ -132,16 +115,9 @@ export default function NavbarClient({
     };
   }, []);
 
-  useEffect(() => {
-    if (!(user as any).error) {
-      setUserLogin(true);
-      setUsername({
-        email: (user as any).email,
-        firstname: (user as any).firstname,
-        lastname: (user as any).lastname,
-      });
-    }
-  }, [user]);
+  const login = CheckIfUserLogin();
+
+  //   console.log(login);
 
   return (
     <>
@@ -223,15 +199,15 @@ export default function NavbarClient({
               );
             })}
 
-            {hasCookie ? (
+            {login.isUserLogin && login.username.firstname ? (
               <li>
                 <Link href="/account/user" className="navbar-link">
-                  {username.firstname}
+                  {login.username.firstname}
                 </Link>
               </li>
             ) : null}
 
-            {hasCookie ? (
+            {login.isUserLogin ? (
               <li>
                 <Link
                   href=""
@@ -251,7 +227,7 @@ export default function NavbarClient({
               </li>
             ) : null}
 
-            {hasCookie ? null : (
+            {login.isUserLogin ? null : (
               <li>
                 <Link
                   href="/account/login"
@@ -338,7 +314,7 @@ export default function NavbarClient({
                   );
                 })}
                 <li>
-                  {hasCookie ? (
+                  {login.isUserLogin ? (
                     <Link
                       href="/account/user"
                       className="navbar-link-mobile"
@@ -363,7 +339,7 @@ export default function NavbarClient({
                   )}
                 </li>
 
-                {hasCookie ? (
+                {login.isUserLogin ? (
                   <li>
                     <Link
                       href=""

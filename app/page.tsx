@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./page.module.css";
 import { feature, testimonial, course, pathStep } from "../util/data/data";
-import clientPromise from "../util/data/database";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
