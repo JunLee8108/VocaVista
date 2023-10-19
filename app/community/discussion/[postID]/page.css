@@ -74,16 +74,22 @@
   font-weight: 500;
 }
 
+.comments-user {
+  display: inline-block;
+  font-size: 13.5px;
+}
+
 .comments-date {
-  font-size: 13px;
+  margin-left: 10px;
+  font-size: 11px;
   margin-bottom: 0;
-  color: gray;
+  color: #908e9b;
+  display: inline-block;
 }
 
 .comments {
-  margin-top: 5px;
+  margin-top: 0px;
   font-size: 15px;
-  display: inline-block;
 }
 
 .comments-delete {
@@ -93,7 +99,7 @@
   border: none;
   background-color: transparent;
   /* color: #8c65d3; */
-  color: #131313;
+  color: #565360;
   cursor: pointer;
   transition: 0.3s ease color;
 }

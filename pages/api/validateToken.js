@@ -10,8 +10,6 @@ export default async function handler(req, res) {
   try {
     // GET
     if (req.method === "GET") {
-      // const token = getCookie("token", { req, res });
-
       let token;
 
       if (req.headers.authorization) {
@@ -19,8 +17,6 @@ export default async function handler(req, res) {
       } else {
         token = getCookie("token", { req, res });
       }
-
-      // console.log(req.headers.authorization);
 
       if (!token) {
         return res.status(200).json({ error: "Token doesn't exist" });

@@ -5,7 +5,13 @@ import LoadingPage from "../../../../util/helpers/LoadingPage";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-export default function CommentForm({ parentsID }: { parentsID: string }) {
+export default function CommentForm({
+  parentsID,
+  userData,
+}: {
+  parentsID: string;
+  userData: Response | undefined;
+}) {
   const [comment, setComment] = useState("");
   const [isLoading, setLoading] = useState(false);
 
@@ -24,9 +30,9 @@ export default function CommentForm({ parentsID }: { parentsID: string }) {
 
     let comments = {
       content: comment,
-      firstname: "",
-      lastname: "",
-      email: "",
+      firstname: (userData as any).firstname,
+      lastname: (userData as any).lastname,
+      email: (userData as any).email,
       parent: parentsID,
       createdAt: dateString,
     };
