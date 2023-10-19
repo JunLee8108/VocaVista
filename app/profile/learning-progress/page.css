@@ -1,0 +1,60 @@
+.learning-progress-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  min-height: calc(100vh - 7rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.learning-progress-header {
+  color: #3d3d3d;
+  padding-top: 4px;
+  margin-bottom: 0;
+}
+
+.learning-progress-sub-header {
+  max-width: 800px;
+  margin-bottom: 3rem;
+  color: grey;
+  font-size: 14px;
+  line-height: 25px;
+}
+
+.icon {
+  color: #8c65d3;
+}
+
+.milestones {
+  width: 100%;
+  padding: 20px;
+  margin-top: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  color: #333;
+}
+
+.milestones h2 {
+  margin-top: 0;
+  color: #8c65d3;
+}
+
+.milestone {
+  margin-bottom: 20px;
+}
+
+.progress-container {
+  width: 100%;
+  background-color: #e0e0df;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.progress-bar {
+  height: 20px;
+  background-color: #8c65d3;
+  border-radius: 5px;
+}

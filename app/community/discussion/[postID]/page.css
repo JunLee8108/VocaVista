@@ -94,6 +94,7 @@
 .comments {
   margin-top: 0px;
   font-size: 15px;
+  white-space: pre-line;
 }
 
 .comments-delete {

@@ -27,6 +27,21 @@ const navbarList = [
   },
 ];
 
+const navbarProfileSubmenu = [
+  {
+    id: 0,
+    name: "Account Setting",
+  },
+  {
+    id: 1,
+    name: "Learning Progress",
+  },
+  {
+    id: 2,
+    name: "Badge Reward",
+  },
+];
+
 const feature = [
   {
     id: 0,
@@ -89,6 +104,7 @@ const course = [
     id: 0,
     img: course1,
     difficulty: "beginner",
+    progress: "100%",
     title: "Beginner Korean *",
     subTitle:
       "Master Hangul, essential phrases, and basic grammar with interactivelessons and practical exercises, laying a solid foundation in Korean.",
@@ -159,6 +175,7 @@ const course = [
     id: 1,
     img: course2,
     difficulty: "intermediate",
+    progress: "80%",
     title: "Intermediate Korean Conversations *",
     subTitle:
       "Elevate your Korean fluency with lessons focused on advanced grammar, practical conversation scenarios, and cultural insights.",
@@ -230,6 +247,7 @@ const course = [
     id: 2,
     img: course3,
     difficulty: "advanced",
+    progress: "10%",
     title: "Advanced Korean Writing *",
     subTitle:
       "Refine your Korean writing with advanced structures, styles, and cultural insights.",
@@ -366,6 +384,7 @@ const questions: Question[] = [
 
 export {
   navbarList,
+  navbarProfileSubmenu,
   feature,
   testimonial,
   course,

@@ -19,6 +19,26 @@ export default function CheckIfUserLogin() {
 
   const pathname = usePathname();
 
+  const deleteCookie = async () => {
+    let resCookie = await fetch("/api/validateToken", {
+      method: "DELETE",
+      credentials: "include",
+      body: JSON.stringify("delete"),
+    });
+
+    const userData = await resCookie.json();
+
+    if (userData === "Success!") {
+      //   setUserLogin(false);
+      alert("Token is not valid!");
+      const timer = setTimeout(() => {
+        window.location.reload();
+      }, 500);
+    } else {
+      alert("Token doesn't exist");
+    }
+  };
+
   useEffect(() => {
     const getCookie = async () => {
       let resCookie = await fetch("/api/validateToken", {
@@ -30,6 +50,10 @@ export default function CheckIfUserLogin() {
 
       if (userData.error === "Token doesn't exist") {
         return;
+      }
+
+      if (userData.error === "Not authorized") {
+        return deleteCookie();
       }
 
       let getUserInfo = await fetch("/api/user", {

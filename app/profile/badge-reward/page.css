@@ -1,4 +1,4 @@
-.user-container {
+.badge-reward-container {
   max-width: 800px;
   margin: auto;
   padding: 20px;
@@ -9,13 +9,13 @@
   align-items: center;
 }
 
-.user-header {
+.badge-reward-header {
   color: #3d3d3d;
   padding-top: 4px;
   margin-bottom: 0;
 }
 
-.user-sub-header {
+.badge-reward-sub-header {
   max-width: 800px;
   margin-bottom: 3rem;
   color: grey;

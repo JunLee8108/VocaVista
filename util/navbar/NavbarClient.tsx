@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState, useEffect, MouseEvent } from "react";
 import { navbarList } from "../data/data";
+import { navbarProfileSubmenu } from "../data/data";
 import "./Navbar.css";
 import LoadingPage from "../helpers/LoadingPage";
 import CheckIfUserLogin from "../helpers/\bCheckIfUserLogin";
@@ -201,9 +202,28 @@ export default function NavbarClient() {
 
             {login.isUserLogin && login.username.firstname ? (
               <li>
-                <Link href="/profile/user" className="navbar-link">
+                <Link href="/profile/account-setting" className="navbar-link">
                   {login.username.firstname}
                 </Link>
+
+                <ul className="submenu">
+                  {navbarProfileSubmenu.map((content, index) => {
+                    const subMenuListLowerCase = content.name
+                      .replaceAll(" ", "-")
+                      .toLocaleLowerCase();
+                    return (
+                      <li key={index}>
+                        <Link
+                          href={`/profile/${subMenuListLowerCase}`}
+                          className="navbar-link"
+                          onClick={removeSessionStorage}
+                        >
+                          {content.name}
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
               </li>
             ) : null}
 

@@ -2,9 +2,7 @@ import jwt from "jsonwebtoken";
 import cookie from "cookie";
 import clientPromise from "../../util/data/database";
 import { ObjectId } from "mongodb";
-import { getCookies, setCookie, deleteCookie, getCookie } from "cookies-next";
-import { headers } from "next/headers";
-import { cookies } from "next/headers";
+import { getCookie } from "cookies-next";
 
 export default async function handler(req, res) {
   try {
