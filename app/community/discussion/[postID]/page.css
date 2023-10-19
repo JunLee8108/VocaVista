@@ -25,6 +25,10 @@
   margin-bottom: 20px;
 }
 
+.post-detail-content {
+  white-space: pre-line;
+}
+
 .post-detail-edit {
   color: #131313;
   border: none;
