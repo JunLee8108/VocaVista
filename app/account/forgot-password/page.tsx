@@ -1,4 +1,5 @@
 import "./page.css";
+import ForgotPasswordClient from "./ForgotPasswordClient";
 
 export default function ForgotPassword() {
   return (
@@ -16,32 +17,7 @@ export default function ForgotPassword() {
             <h2>Reset Your Password</h2>
           </div>
 
-          <form>
-            <div className="forgot-password-input-container">
-              <input
-                type="email"
-                placeholder="Email*"
-                id="loginEmail"
-                required
-              ></input>
-              <label htmlFor="loginEmail">EMAIL</label>
-            </div>
-            <div className="forgot-password-input-container">
-              <input
-                type="email"
-                placeholder="Confirm Email*"
-                id="loginEmail-confirm"
-                required
-              ></input>
-              <label htmlFor="loginEmail-confirm">CONFIRM EMAIL</label>
-            </div>
-
-            <div className="forgot-password-button-container display-flex">
-              <div className="forgot-password-button-flexbox display-flex">
-                <button type="submit">SEND</button>
-              </div>
-            </div>
-          </form>
+          <ForgotPasswordClient />
         </div>
       </div>
     </>

@@ -19,6 +19,10 @@ export default async function handler(req, res) {
         return res.status(200).json("User doesn't exists!");
       }
 
+      if (!existingUser.isVerified) {
+        return res.status(200).json("Please verfiy your email first!");
+      }
+
       const isPasswordCorrect = bcrypt.compareSync(
         data.password,
         existingUser.password

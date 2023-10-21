@@ -37,7 +37,8 @@ export default function LoginForm() {
 
     if (
       responseString === "User doesn't exists!" ||
-      responseString === "Password is incorrect!"
+      responseString === "Password is incorrect!" ||
+      responseString === "Please verfiy your email first!"
     ) {
       alert(responseString);
     } else if (responseString === "Success!") {
